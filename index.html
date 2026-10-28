@@ -1,0 +1,1522 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!--
+    CRITICAL SAFETY SCRIPT — runs before CSS.
+    Ensures content is never permanently hidden if the main script fails.
+  -->
+  <script>
+    (function () {
+      // Flag that JS is available. CSS only hides [data-reveal] when this class is present.
+      document.documentElement.classList.add('reveal-ready');
+
+      // Fallback: if the observer never fires within 2.5s, force-reveal everything.
+      window.addEventListener('load', function () {
+        setTimeout(function () {
+          var anyRevealed = document.querySelector('[data-reveal].is-visible');
+          if (!anyRevealed) {
+            var els = document.querySelectorAll('[data-reveal]');
+            for (var i = 0; i < els.length; i++) els[i].classList.add('is-visible');
+          }
+        }, 2500);
+      });
+    })();
+  </script>
+
+  <meta name="theme-color" content="#FAF9F7" media="(prefers-color-scheme: light)" />
+  <meta name="theme-color" content="#0C0A09" media="(prefers-color-scheme: dark)" />
+  <meta name="color-scheme" content="light dark" />
+
+  <title>Meru Precision Industries — Precision Gauges, Jigs & Fixtures, Machined Components | Bengaluru · Est. 1983</title>
+  <meta name="description" content="Est. 1983, Rajajinagar, Bengaluru. Manufacturer of precision metrology gauges (plug, ring, snap, taper, profile, pin, runout), custom jigs & fixtures, lead screws & nuts, Phosphorous Bronze gang saw rings, PCB wedge locks, heat sinks, and rotary speedometer cable swaging machines. Build-to-print & concept-to-sample." />
+  <meta name="author" content="Meru Precision Industries" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <link rel="canonical" href="https://meruprecision.co.in/" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Meru Precision Industries" />
+  <meta property="og:title" content="Meru Precision Industries — 43 Years of Precision Tooling, Metrology & Custom Machining" />
+  <meta property="og:description" content="Build-to-print manufacturer serving Tier-1 automotive, aerospace, hydraulics & heavy engineering OEMs since 1983. Gauges, jigs, fixtures, linear motion, electronic hardware, and SPMs from Rajajinagar, Bengaluru." />
+  <meta property="og:url" content="https://meruprecision.co.in/" />
+  <meta property="og:image" content="https://meruprecision.co.in/assets/images/og/social-preview.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:locale" content="en_IN" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Meru Precision Industries — Precision Gauges, Fixtures & Machined Components" />
+  <meta name="twitter:description" content="Est. 1983 · Bengaluru. Build-to-print precision tooling for Tier-1 automotive, aerospace and heavy engineering OEMs." />
+  <meta name="twitter:image" content="https://meruprecision.co.in/assets/images/og/social-preview.jpg" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: ['selector', '[data-theme="dark"]'],
+      theme: {
+        extend: {
+          colors: {
+            bg:         'rgb(var(--c-bg) / <alpha-value>)',
+            surface:    'rgb(var(--c-surface) / <alpha-value>)',
+            surface2:   'rgb(var(--c-surface2) / <alpha-value>)',
+            ink:        'rgb(var(--c-ink) / <alpha-value>)',
+            muted:      'rgb(var(--c-muted) / <alpha-value>)',
+            subtle:     'rgb(var(--c-subtle) / <alpha-value>)',
+            line:       'rgb(var(--c-border) / <alpha-value>)',
+            'line-strong': 'rgb(var(--c-border-strong) / <alpha-value>)',
+            accent:     'rgb(var(--c-accent) / <alpha-value>)',
+            'accent-hover': 'rgb(var(--c-accent-hover) / <alpha-value>)',
+            secondary:  'rgb(var(--c-secondary) / <alpha-value>)',
+          },
+          fontFamily: {
+            display: ['"Space Grotesk"', 'system-ui', 'sans-serif'],
+            sans: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'ui-monospace', 'monospace'],
+          },
+          maxWidth: { '8xl': '88rem' },
+        },
+      },
+    };
+  </script>
+
+  <style>
+    :root {
+      --c-bg: 250 249 247;
+      --c-surface: 255 255 255;
+      --c-surface2: 245 244 241;
+      --c-ink: 17 17 16;
+      --c-muted: 107 104 98;
+      --c-subtle: 152 148 142;
+      --c-border: 232 228 222;
+      --c-border-strong: 214 210 203;
+      --c-accent: 15 23 42;          /* deep navy blue */
+      --c-accent-hover: 30 41 59;
+      --c-secondary: 14 116 144;
+    }
+    [data-theme="dark"] {
+      --c-bg: 12 10 9;
+      --c-surface: 28 25 23;
+      --c-surface2: 41 37 36;
+      --c-ink: 250 250 249;
+      --c-muted: 168 162 158;
+      --c-subtle: 120 113 108;
+      --c-border: 41 37 36;
+      --c-border-strong: 68 64 60;
+      --c-accent: 148 163 184;
+      --c-accent-hover: 203 213 225;
+      --c-secondary: 34 211 238;
+    }
+
+    html {
+      -webkit-text-size-adjust: 100%;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    body {
+      background-color: rgb(var(--c-bg));
+      color: rgb(var(--c-ink));
+      font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+      transition: background-color 0.25s ease, color 0.25s ease;
+      overflow-x: hidden;
+    }
+    .no-transition, .no-transition * { transition: none !important; }
+
+    ::selection {
+      background-color: rgb(var(--c-accent) / 0.2);
+      color: rgb(var(--c-ink));
+    }
+
+    .skip-link {
+      position: absolute; top: -48px; left: 12px; z-index: 100;
+      background: rgb(var(--c-ink)); color: rgb(var(--c-bg));
+      padding: 10px 16px; font-family: 'JetBrains Mono', monospace;
+      font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase;
+      text-decoration: none; transition: top 0.2s ease; border-radius: 2px;
+    }
+    .skip-link:focus { top: 12px; }
+
+    ::-webkit-scrollbar { width: 10px; height: 10px; }
+    ::-webkit-scrollbar-track { background: rgb(var(--c-surface2)); }
+    ::-webkit-scrollbar-thumb { background: rgb(var(--c-border-strong)); border-radius: 2px; }
+    ::-webkit-scrollbar-thumb:hover { background: rgb(var(--c-accent)); }
+
+    .bg-grid-soft {
+      background-image:
+        linear-gradient(to right, rgb(var(--c-ink) / 0.035) 1px, transparent 1px),
+        linear-gradient(to bottom, rgb(var(--c-ink) / 0.035) 1px, transparent 1px);
+      background-size: 40px 40px;
+    }
+
+    .img-ph {
+      position: relative; display: flex; align-items: center; justify-content: center;
+      background-color: rgb(var(--c-surface2));
+      border: 1.5px dashed rgb(var(--c-border-strong));
+      border-radius: 4px; overflow: hidden;
+      color: rgb(var(--c-subtle));
+      font-family: 'JetBrains Mono', monospace;
+      text-align: center; padding: 12px;
+      transition: border-color 0.2s ease, background-color 0.2s ease;
+    }
+    .img-ph:hover {
+      border-color: rgb(var(--c-accent) / 0.5);
+      background-color: rgb(var(--c-accent) / 0.04);
+    }
+    .img-ph::before {
+      content: ''; position: absolute; inset: 0;
+      background-image: linear-gradient(135deg, transparent 46%,
+        rgb(var(--c-border)) 46%, rgb(var(--c-border)) 54%, transparent 54%);
+      background-size: 32px 32px; opacity: 0.4; pointer-events: none;
+    }
+    .img-ph-inner {
+      position: relative; z-index: 1;
+      display: flex; flex-direction: column; align-items: center;
+      gap: 8px; max-width: 100%;
+    }
+    .img-ph svg { width: 26px; height: 26px; opacity: 0.45; flex-shrink: 0; }
+    .img-ph .ph-label {
+      font-size: 10px; font-weight: 600; letter-spacing: 0.12em;
+      text-transform: uppercase; color: rgb(var(--c-muted)); line-height: 1.2;
+    }
+    .img-ph .ph-path {
+      font-size: 9px; color: rgb(var(--c-subtle));
+      word-break: break-all; line-height: 1.35; opacity: 0.85;
+    }
+
+    /* ───────────────────────────────────────────────────────────────
+       REVEAL ON SCROLL — bulletproof version
+       Content is only hidden when html.reveal-ready is set (added by JS).
+       If JS fails, .reveal-ready is never added → content visible.
+       ─────────────────────────────────────────────────────────────── */
+    [data-reveal] {
+      transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1),
+                  transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    html.reveal-ready [data-reveal]:not(.is-visible) {
+      opacity: 0;
+      transform: translateY(18px);
+    }
+    [data-reveal].is-visible {
+      opacity: 1 !important;
+      transform: translateY(0) !important;
+    }
+    @media (prefers-reduced-motion: reduce) {
+      [data-reveal] { opacity: 1 !important; transform: none !important; transition: none !important; }
+      html { scroll-behavior: auto; }
+    }
+
+    :focus-visible {
+      outline: 2px solid rgb(var(--c-accent));
+      outline-offset: 2px; border-radius: 2px;
+    }
+
+    details > summary { cursor: pointer; list-style: none; }
+    details > summary::-webkit-details-marker { display: none; }
+    details[open] .chev { transform: rotate(180deg); }
+
+    dialog#product-modal {
+      padding: 0; border: none; background: transparent;
+      max-width: min(960px, calc(100vw - 24px));
+      max-height: calc(100vh - 40px);
+      width: 100%; border-radius: 8px; overflow: hidden;
+    }
+    dialog#product-modal::backdrop {
+      background: rgba(0, 0, 0, 0.55); backdrop-filter: blur(4px);
+    }
+
+    @keyframes marquee {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+    .marquee-track {
+      display: flex; gap: 3rem;
+      animation: marquee 45s linear infinite; width: max-content;
+    }
+    .marquee-mask {
+      mask-image: linear-gradient(90deg, transparent, black 10%, black 90%, transparent);
+      -webkit-mask-image: linear-gradient(90deg, transparent, black 10%, black 90%, transparent);
+      overflow: hidden;
+    }
+    @media (prefers-reduced-motion: reduce) { .marquee-track { animation: none; } }
+
+    @keyframes pulse-dot {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(0.9); }
+    }
+    .pulse-dot {
+      display: inline-block; width: 7px; height: 7px; border-radius: 999px;
+      background: rgb(var(--c-accent)); animation: pulse-dot 2.4s ease-in-out infinite;
+    }
+
+    @keyframes ph-drift {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-2px); }
+    }
+    .img-ph svg { animation: ph-drift 4s ease-in-out infinite; }
+
+    .field-error input, .field-error select, .field-error textarea {
+      border-color: #DC2626 !important;
+    }
+    .error-msg {
+      display: none; font-size: 11px; color: #DC2626;
+      margin-top: 4px; font-family: 'JetBrains Mono', monospace;
+    }
+    .field-error .error-msg { display: block; }
+
+    .nav-link {
+      display: inline-flex; align-items: center; gap: 4px;
+      padding: 8px 12px; font-size: 13px; font-weight: 500;
+      color: rgb(var(--c-muted)); border-radius: 2px;
+      transition: color 0.15s, background-color 0.15s;
+    }
+    .nav-link:hover { color: rgb(var(--c-ink)); background-color: rgb(var(--c-surface2)); }
+    .mobile-link {
+      display: block; padding: 11px 12px; font-size: 14px; font-weight: 500;
+      color: rgb(var(--c-ink)); border-radius: 2px;
+    }
+    .mobile-link:hover { background-color: rgb(var(--c-surface2)); }
+    .mobile-link-cta {
+      display: block; margin-top: 8px; padding: 12px;
+      font-size: 13px; font-weight: 600; color: rgb(var(--c-bg));
+      background-color: rgb(var(--c-accent)); text-align: center;
+      text-transform: uppercase; letter-spacing: 0.05em; border-radius: 2px;
+    }
+    .footer-link { color: rgb(var(--c-bg) / 0.6); transition: color 0.15s; }
+    .footer-link:hover { color: rgb(var(--c-accent)); }
+
+    .form-input {
+      width: 100%; background-color: rgb(var(--c-surface));
+      border: 1px solid rgb(var(--c-border-strong));
+      padding: 10px 14px; font-size: 14px; color: rgb(var(--c-ink));
+      border-radius: 2px; font-family: inherit;
+      transition: border-color 0.15s, box-shadow 0.15s;
+    }
+    .form-input::placeholder { color: rgb(var(--c-subtle)); }
+    .form-input:focus {
+      outline: none; border-color: rgb(var(--c-accent));
+      box-shadow: 0 0 0 3px rgb(var(--c-accent) / 0.1);
+    }
+
+    .cat-btn {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 9px 14px; font-family: 'JetBrains Mono', monospace;
+      font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em;
+      font-weight: 600; color: rgb(var(--c-muted));
+      background-color: rgb(var(--c-surface));
+      border: 1px solid rgb(var(--c-border-strong));
+      border-radius: 2px; transition: all 0.15s; cursor: pointer;
+    }
+    .cat-btn:hover { border-color: rgb(var(--c-ink)); color: rgb(var(--c-ink)); }
+    .cat-btn[aria-selected="true"] {
+      background-color: rgb(var(--c-ink)); color: rgb(var(--c-bg));
+      border-color: rgb(var(--c-ink));
+    }
+    .cat-btn[aria-selected="true"] .opacity-60 { opacity: 0.65; }
+
+    .client-btn {
+      display: inline-flex; align-items: center; padding: 6px 12px;
+      font-family: 'JetBrains Mono', monospace; font-size: 10px;
+      text-transform: uppercase; letter-spacing: 0.06em; font-weight: 600;
+      color: rgb(var(--c-muted)); background-color: rgb(var(--c-surface));
+      border: 1px solid rgb(var(--c-border-strong));
+      border-radius: 2px; transition: all 0.15s; cursor: pointer;
+    }
+    .client-btn:hover { border-color: rgb(var(--c-ink)); color: rgb(var(--c-ink)); }
+    .client-btn[aria-selected="true"] {
+      background-color: rgb(var(--c-ink)); color: rgb(var(--c-bg));
+      border-color: rgb(var(--c-ink));
+    }
+
+    .product-card {
+      background-color: rgb(var(--c-surface));
+      border: 1px solid rgb(var(--c-border));
+      border-radius: 4px; overflow: hidden;
+      display: flex; flex-direction: column;
+      transition: all 0.2s; cursor: pointer;
+    }
+    .product-card:hover {
+      border-color: rgb(var(--c-accent));
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px -8px rgb(var(--c-ink) / 0.12);
+    }
+    .product-card .img-ph {
+      border-radius: 0; border: none;
+      border-bottom: 1.5px dashed rgb(var(--c-border-strong));
+      aspect-ratio: 4/3;
+    }
+    .product-card:hover h3 { color: rgb(var(--c-accent)); }
+
+    .client-card {
+      background-color: rgb(var(--c-surface));
+      border: 1px solid rgb(var(--c-border));
+      padding: 14px; border-radius: 2px; transition: all 0.15s;
+    }
+    .client-card:hover { border-color: rgb(var(--c-ink)); transform: translateY(-1px); }
+
+    .modal-thumb {
+      aspect-ratio: 1/1; padding: 6px; border-radius: 2px;
+      border: 1.5px dashed rgb(var(--c-border-strong));
+      background-color: rgb(var(--c-surface2));
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; transition: all 0.15s; text-align: center;
+    }
+    .modal-thumb:hover { border-color: rgb(var(--c-accent)); }
+    .modal-thumb .ph-label { font-size: 8px; line-height: 1.1; }
+    .modal-thumb svg { width: 16px; height: 16px; opacity: 0.4; }
+  </style>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "@id": "https://meruprecision.co.in/#organization",
+    "name": "Meru Precision Industries",
+    "alternateName": "Meru Precision Industry",
+    "url": "https://meruprecision.co.in/",
+    "logo": "https://meruprecision.co.in/assets/images/company/logo.png",
+    "foundingDate": "1983",
+    "description": "Precision engineering and tooling manufacturer based in Rajajinagar, Bengaluru. Build-to-print supplier of metrology gauges, jigs and fixtures, lead screws and nuts, Phosphorous Bronze gang saw bearings, PCB wedge locks, heat sinks, and rotary speedometer cable swaging machines.",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "1706, Dr. Rajkumar Road, Prakash Nagar, Rajajinagar",
+      "addressLocality": "Bengaluru",
+      "addressRegion": "Karnataka",
+      "postalCode": "560021",
+      "addressCountry": "IN"
+    },
+    "telephone": "+91-9986465377",
+    "email": "merushiv@gmail.com",
+    "sameAs": ["https://maps.app.goo.gl/Yx8zkctrPCGUyiVB6"]
+  }
+  </script>
+</head>
+
+<body class="antialiased">
+
+  <a href="#main" class="skip-link">Skip to main content</a>
+
+  <header id="site-header" class="sticky top-0 z-40 bg-bg/85 backdrop-blur-md border-b border-line transition-shadow duration-200">
+    <div class="max-w-8xl mx-auto px-5 sm:px-8">
+      <div class="flex items-center justify-between h-16 lg:h-20">
+        <a href="#home" class="flex items-center gap-3 group" aria-label="Meru Precision Industries — home">
+          <div class="relative w-10 h-10 border border-line-strong bg-surface flex items-center justify-center group-hover:border-accent transition-colors rounded-sm">
+            <svg class="w-5 h-5 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <path stroke-linecap="square" d="M3 20V4l5.5 8L14 4v16M18 4h3v16h-3M19.5 9h1.5M19.5 15h1.5"/>
+            </svg>
+            <span class="absolute -bottom-1 -right-1 bg-accent text-[8px] font-mono font-bold px-1 text-bg leading-tight rounded-sm">83</span>
+          </div>
+          <div class="leading-tight">
+            <span class="block font-display font-bold text-[15px] tracking-tight text-ink">MERU PRECISION</span>
+            <span class="block font-mono text-[9px] tracking-[0.22em] text-muted uppercase mt-0.5">INDUSTRIES · BENGALURU</span>
+          </div>
+        </a>
+
+        <nav class="hidden lg:flex items-center gap-0.5" aria-label="Main">
+          <a href="#about" class="nav-link">About</a>
+          <a href="#products" class="nav-link">Products <span class="text-accent font-mono text-[10px]">15</span></a>
+          <a href="#capabilities" class="nav-link">Capabilities</a>
+          <a href="#quality" class="nav-link">Quality</a>
+          <a href="#industries" class="nav-link">Industries</a>
+          <a href="#gallery" class="nav-link">Gallery</a>
+          <a href="#contact" class="nav-link">Contact</a>
+        </nav>
+
+        <div class="flex items-center gap-2">
+          <button type="button" id="theme-toggle" class="w-9 h-9 flex items-center justify-center border border-line-strong bg-surface hover:bg-surface2 text-ink rounded-sm transition-colors" aria-label="Switch color theme" title="Switch color theme">
+            <svg class="w-4 h-4 theme-icon-light" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+            <svg class="w-4 h-4 theme-icon-dark hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707M17.657 17.657l-.707-.707M6.343 6.343l-.707-.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+          </button>
+
+          <a href="#contact" class="hidden sm:inline-flex items-center gap-2 bg-ink text-bg hover:bg-accent font-display font-semibold text-[11px] uppercase tracking-wider px-4 py-2.5 rounded-sm transition-colors">
+            Enquire Now
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+          </a>
+
+          <button type="button" id="mobile-menu-btn" class="lg:hidden w-9 h-9 flex items-center justify-center border border-line-strong bg-surface text-ink rounded-sm" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div id="mobile-menu" class="hidden lg:hidden border-t border-line bg-surface">
+      <nav class="px-5 py-4 space-y-1" aria-label="Mobile">
+        <a href="#about" class="mobile-link">About</a>
+        <a href="#products" class="mobile-link">Products <span class="text-accent font-mono text-[10px]">15</span></a>
+        <a href="#capabilities" class="mobile-link">Manufacturing Capabilities</a>
+        <a href="#quality" class="mobile-link">Quality Assurance</a>
+        <a href="#industries" class="mobile-link">Industries Served</a>
+        <a href="#gallery" class="mobile-link">Gallery</a>
+        <a href="#contact" class="mobile-link">Contact</a>
+        <a href="#contact" class="mobile-link-cta">Enquire Now →</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <section id="home" class="relative bg-grid-soft border-b border-line overflow-hidden">
+      <div class="max-w-8xl mx-auto px-5 sm:px-8 pt-14 lg:pt-24 pb-16 lg:pb-24">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-10 items-center">
+          <div class="lg:col-span-7">
+            <div class="inline-flex items-center gap-2.5 px-3 py-1.5 bg-surface border border-line rounded-full text-[11px] font-mono text-muted">
+              <span class="pulse-dot"></span>
+              <span class="uppercase tracking-wider">EST. 1983 · RAJAJINAGAR, BENGALURU</span>
+            </div>
+
+            <h1 class="mt-6 font-display font-bold text-[34px] leading-[1.08] sm:text-5xl lg:text-[58px] lg:leading-[1.03] tracking-tight text-ink">
+              Precision gauges, fixtures &amp; machined components — <span class="text-accent">engineered since 1983.</span>
+            </h1>
+
+            <p class="mt-6 text-base sm:text-lg leading-relaxed text-muted max-w-2xl">
+              Build-to-print manufacturer of metrology gauges, assembly fixtures, linear motion components, electronic hardware, and special-purpose machines — serving Tier‑1 automotive, aerospace, defense, hydraulics and heavy engineering OEMs from our Rajajinagar toolroom.
+            </p>
+
+            <div class="mt-8 flex flex-col sm:flex-row sm:items-center gap-3">
+              <a href="#products" class="inline-flex items-center justify-center gap-2.5 bg-accent hover:bg-accent-hover text-bg font-display font-semibold text-sm uppercase tracking-wider px-6 py-3.5 rounded-sm transition-colors">
+                Explore 15 Products
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+              </a>
+              <a href="#contact" class="inline-flex items-center justify-center gap-2 bg-surface hover:bg-surface2 border border-line-strong text-ink font-display font-semibold text-sm uppercase tracking-wider px-6 py-3.5 rounded-sm transition-colors">
+                <svg class="w-4 h-4 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+                Request a Quote
+              </a>
+            </div>
+
+            <div class="mt-10 pt-6 border-t border-line grid grid-cols-2 sm:grid-cols-4 gap-x-4 gap-y-4">
+              <div><div class="font-display font-bold text-2xl text-ink">43<span class="text-sm font-mono text-accent font-normal"> yrs</span></div><div class="font-mono text-[10px] uppercase tracking-wider text-subtle mt-0.5">Since 1983</div></div>
+              <div><div class="font-display font-bold text-2xl text-ink">15<span class="text-sm font-mono text-accent font-normal"> lines</span></div><div class="font-mono text-[10px] uppercase tracking-wider text-subtle mt-0.5">Product divisions</div></div>
+              <div><div class="font-display font-bold text-2xl text-ink">23<span class="text-sm font-mono text-accent font-normal">+</span></div><div class="font-mono text-[10px] uppercase tracking-wider text-subtle mt-0.5">OEM clients</div></div>
+              <div><div class="font-display font-bold text-2xl text-ink">6<span class="text-sm font-mono text-accent font-normal"> sect</span></div><div class="font-mono text-[10px] uppercase tracking-wider text-subtle mt-0.5">Industries</div></div>
+            </div>
+          </div>
+
+          <div class="lg:col-span-5">
+            <div class="relative">
+              <div class="absolute -top-2 -left-2 w-4 h-4 border-t-2 border-l-2 border-accent"></div>
+              <div class="absolute -top-2 -right-2 w-4 h-4 border-t-2 border-r-2 border-accent"></div>
+              <div class="absolute -bottom-2 -left-2 w-4 h-4 border-b-2 border-l-2 border-accent"></div>
+              <div class="absolute -bottom-2 -right-2 w-4 h-4 border-b-2 border-r-2 border-accent"></div>
+
+              <div class="bg-surface border border-line-strong p-3 rounded-sm shadow-sm">
+                <div class="img-ph aspect-[4/3]">
+                  <div class="img-ph-inner">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                    <span class="ph-label">Flagship Product Photo</span>
+                    <code class="ph-path">/assets/images/company/hero-flagship.jpg</code>
+                  </div>
+                </div>
+                <div class="mt-3 flex items-center justify-between font-mono text-[10px] text-muted px-1">
+                  <span>SCALE 1:1</span><span class="text-accent">DOC // MPI-1983</span><span>±0.001 mm</span>
+                </div>
+                <div class="mt-3 grid grid-cols-2 gap-2">
+                  <div class="bg-surface2 border border-line p-2.5 rounded-sm"><div class="font-mono text-[9px] uppercase tracking-wider text-subtle">Hardness</div><div class="font-display font-bold text-sm text-ink mt-0.5">58–62 HRC</div></div>
+                  <div class="bg-surface2 border border-line p-2.5 rounded-sm"><div class="font-mono text-[9px] uppercase tracking-wider text-subtle">Workflow</div><div class="font-display font-bold text-sm text-accent mt-0.5">Sample-first</div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="bg-surface border-b border-line py-6">
+      <div class="max-w-8xl mx-auto px-5 sm:px-8">
+        <div class="flex items-center gap-6">
+          <span class="hidden md:inline-block font-mono text-[10px] uppercase tracking-widest text-subtle whitespace-nowrap shrink-0">Trusted by Tier‑1 leaders</span>
+          <div class="marquee-mask flex-1">
+            <div class="marquee-track font-display font-semibold text-sm text-muted">
+              <span>TAFE</span><span class="text-line-strong">·</span>
+              <span>ZF Rane</span><span class="text-line-strong">·</span>
+              <span>Suprajit Engineering</span><span class="text-line-strong">·</span>
+              <span>Nash Industries</span><span class="text-line-strong">·</span>
+              <span>Daifuku India</span><span class="text-line-strong">·</span>
+              <span>Blue Star Engineering</span><span class="text-line-strong">·</span>
+              <span>Stein Seal India</span><span class="text-line-strong">·</span>
+              <span>Kems Forgings</span><span class="text-line-strong">·</span>
+              <span>PMC Hydraulics</span><span class="text-line-strong">·</span>
+              <span>Universal Flexibles</span><span class="text-line-strong">·</span>
+              <span>Focus Diecast</span><span class="text-line-strong">·</span>
+              <span>Agni Motors</span><span class="text-line-strong">·</span>
+              <span>MPS Precision</span><span class="text-line-strong">·</span>
+              <span>3D Concept Analysis</span><span class="text-line-strong">·</span>
+              <span>TAFE</span><span class="text-line-strong">·</span>
+              <span>ZF Rane</span><span class="text-line-strong">·</span>
+              <span>Suprajit Engineering</span><span class="text-line-strong">·</span>
+              <span>Nash Industries</span><span class="text-line-strong">·</span>
+              <span>Daifuku India</span><span class="text-line-strong">·</span>
+              <span>Blue Star Engineering</span><span class="text-line-strong">·</span>
+              <span>Stein Seal India</span><span class="text-line-strong">·</span>
+              <span>Kems Forgings</span><span class="text-line-strong">·</span>
+              <span>PMC Hydraulics</span><span class="text-line-strong">·</span>
+              <span>Universal Flexibles</span><span class="text-line-strong">·</span>
+              <span>Focus Diecast</span><span class="text-line-strong">·</span>
+              <span>Agni Motors</span><span class="text-line-strong">·</span>
+              <span>MPS Precision</span><span class="text-line-strong">·</span>
+              <span>3D Concept Analysis</span><span class="text-line-strong">·</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="py-20 lg:py-28 bg-bg">
+      <div class="max-w-8xl mx-auto px-5 sm:px-8">
+        <div class="max-w-3xl" data-reveal>
+          <div class="font-mono text-[11px] uppercase tracking-widest text-accent font-semibold">— 01 · About Us</div>
+          <h2 class="mt-3 font-display font-bold text-3xl sm:text-4xl lg:text-5xl tracking-tight text-ink">
+            Forty-three years of grinding, hardening and toolroom craftsmanship in Bengaluru.
+          </h2>
+        </div>
+
+        <div class="mt-12 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-14">
+          <div class="lg:col-span-7 space-y-5" data-reveal>
+            <p class="text-base sm:text-lg leading-relaxed text-muted">
+              Meru Precision Industries was incepted in <strong class="text-ink">1983</strong> in Rajajinagar, Bengaluru. Early work focused on fabricating ball races for two- and three-wheelers — a discipline that instilled mastery over heat treatment, cylindrical grinding, and micron-level bearing surfaces.
+            </p>
+            <p class="text-base leading-relaxed text-muted">
+              In the late 1980s and early 1990s, that foundation expanded into special tools, jigs and fixtures for broader industrial and automotive clients. Over the following decades the company diversified into full-spectrum metrology gauges, linear motion components, electronic hardware, and purpose-built special-purpose machines — always keeping the same discipline: <em class="text-ink not-italic font-semibold">drawing or sample in, conforming part out</em>.
+            </p>
+            <p class="text-base leading-relaxed text-muted">
+              Today, Meru Precision operates as a build-to-print manufacturer and reverse-engineering partner, serving Tier‑1 automotive, aerospace, defense, hydraulics, electronics, and heavy engineering OEMs — with a working model that starts from your formal print, your worn sample, or an oral functional specification.
+            </p>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-3">
+              <div class="bg-surface border border-line p-4 rounded-sm"><div class="font-display font-bold text-sm text-ink">Build-to-print discipline</div><p class="text-xs text-muted mt-1">Tight adherence to your 2D/3D print, material spec, and acceptance criteria — with drawing sign-off before a single cut is made.</p></div>
+              <div class="bg-surface border border-line p-4 rounded-sm"><div class="font-display font-bold text-sm text-ink">Sample-first workflow</div><p class="text-xs text-muted mt-1">Every custom order runs through prototype fabrication and physical approval before batch production begins.</p></div>
+              <div class="bg-surface border border-line p-4 rounded-sm"><div class="font-display font-bold text-sm text-ink">Flexible consignment sizes</div><p class="text-xs text-muted mt-1">Batch quantities scaled to your schedule — from single-piece spares to repeating production runs.</p></div>
+              <div class="bg-surface border border-line p-4 rounded-sm"><div class="font-display font-bold text-sm text-ink">Reverse engineering</div><p class="text-xs text-muted mt-1">Send a worn or legacy part; we generate the working drawing and machine a matched replacement.</p></div>
+            </div>
+          </div>
+
+          <div class="lg:col-span-5" data-reveal>
+            <div class="bg-surface border border-line rounded-sm overflow-hidden">
+              <div class="img-ph aspect-[4/5] rounded-none border-0 border-b border-dashed border-line-strong">
+                <div class="img-ph-inner">
+                  <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>
+                  <span class="ph-label">Founder Portrait</span>
+                  <code class="ph-path">/assets/images/company/founder-portrait.jpg</code>
+                </div>
+              </div>
+              <div class="p-6">
+                <div class="font-mono text-[10px] uppercase tracking-widest text-accent">Founder &amp; Managing Director</div>
+                <h3 class="mt-1 font-display font-bold text-xl text-ink">[Founder name — to confirm]</h3>
+                <p class="mt-3 text-sm leading-relaxed text-muted">Founded Meru Precision Industries in 1983 and continues to lead the toolroom. Full name, designation, and formal biography awaiting confirmation from the client.</p>
+                <div class="mt-4 pt-4 border-t border-line">
+                  <div class="font-mono text-[10px] uppercase tracking-wider text-subtle mb-2">Direct Line</div>
+                  <div class="flex flex-col gap-1.5 text-sm">
+                    <a href="tel:+919986465377" class="text-ink hover:text-accent transition-colors font-medium">+91 99864 65377</a>
+                    <a href="mailto:merushiv@gmail.com" class="text-ink hover:text-accent transition-colors break-all">merushiv@gmail.com</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-16 pt-10 border-t border-line" data-reveal>
+          <div class="font-mono text-[11px] uppercase tracking-widest text-subtle mb-6">— Milestones</div>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div class="bg-surface border border-line p-6 rounded-sm"><div class="font-mono text-[10px] font-bold text-accent uppercase tracking-wider">1983 · Founding</div><h3 class="font-display font-bold text-lg text-ink mt-2">Two- and three-wheeler ball races</h3><p class="text-sm text-muted mt-1.5">Established core metallurgical and precision race-grinding capabilities for India's two- and three-wheeler industry.</p></div>
+            <div class="bg-surface border border-line p-6 rounded-sm"><div class="font-mono text-[10px] font-bold text-accent uppercase tracking-wider">Late 80s – Early 90s</div><h3 class="font-display font-bold text-lg text-ink mt-2">Special tools, jigs &amp; fixtures</h3><p class="text-sm text-muted mt-1.5">Expanded the toolroom to design and manufacture production workholding fixtures, machining jigs, and high-accuracy assembly tooling.</p></div>
+            <div class="bg-surface border border-line p-6 rounded-sm"><div class="font-mono text-[10px] font-bold text-accent uppercase tracking-wider">1990s – Today</div><h3 class="font-display font-bold text-lg text-ink mt-2">Gauges, avionics hardware &amp; SPMs</h3><p class="text-sm text-muted mt-1.5">Diversified into full-spectrum limit gauges, PCB wedge locks, PB gang saw bearings, and rotary swaging machines for cable OEMs.</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="products" class="py-20 lg:py-28 bg-surface2 border-y border-line">
+      <div class="max-w-8xl mx-auto px-5 sm:px-8">
+        <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-10" data-reveal>
+          <div>
+            <div class="font-mono text-[11px] uppercase tracking-widest text-accent font-semibold">— 02 · Products</div>
+            <h2 class="mt-3 font-display font-bold text-3xl sm:text-4xl lg:text-5xl tracking-tight text-ink max-w-2xl">
+              15 specialised product lines across five divisions.
+            </h2>
+          </div>
+          <p class="text-muted text-sm sm:text-base max-w-md">
+            Every item is build-to-print. Click any card for the full spec sheet, application notes, and photo slots. Items marked <span class="font-mono text-xs text-accent">[TO CONFIRM]</span> indicate data awaiting client verification.
+          </p>
+        </div>
+
+        <div class="flex flex-col lg:flex-row lg:items-center gap-4 mb-8" data-reveal>
+          <div class="flex flex-wrap gap-2" role="tablist" aria-label="Product categories">
+            <button class="cat-btn" data-cat="all" type="button" role="tab" aria-selected="true">All <span class="opacity-60">15</span></button>
+            <button class="cat-btn" data-cat="metrology" type="button" role="tab">Metrology <span class="opacity-60">7</span></button>
+            <button class="cat-btn" data-cat="tooling" type="button" role="tab">Jigs &amp; Fixtures <span class="opacity-60">2</span></button>
+            <button class="cat-btn" data-cat="linear" type="button" role="tab">Linear &amp; PB <span class="opacity-60">3</span></button>
+            <button class="cat-btn" data-cat="electronics" type="button" role="tab">Electronic Hardware <span class="opacity-60">2</span></button>
+            <button class="cat-btn" data-cat="spm" type="button" role="tab">SPM <span class="opacity-60">1</span></button>
+          </div>
+          <div class="relative lg:ml-auto lg:w-72">
+            <input id="product-search" type="search" placeholder="Search gauge, wedge lock, PB ring…" class="w-full bg-surface border border-line-strong px-3.5 py-2.5 pr-9 text-sm font-mono text-ink placeholder-subtle rounded-sm focus:border-accent focus:outline-none transition-colors" aria-label="Search products" />
+            <svg class="w-4 h-4 text-subtle absolute right-3 top-3 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+          </div>
+        </div>
+
+        <div id="product-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5"></div>
+
+        <div id="product-empty" class="hidden text-center py-16">
+          <p class="font-display font-bold text-lg text-ink">No matching catalog item found.</p>
+          <p class="text-muted text-sm mt-1">We manufacture custom build-to-print gauges, fixtures, and machined components from your drawing or sample.</p>
+          <a href="#contact" class="inline-block mt-5 bg-accent hover:bg-accent-hover text-bg font-display font-semibold text-xs uppercase tracking-wider px-5 py-3 rounded-sm transition-colors">Submit Custom RFQ →</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="workflow" class="py-20 lg:py-28 bg-bg">
+      <div class="max-w-8xl mx-auto px-5 sm:px-8">
+        <div class="max-w-3xl mx-auto text-center" data-reveal>
+          <div class="font-mono text-[11px] uppercase tracking-widest text-accent font-semibold">— 03 · Our Workflow</div>
+          <h2 class="mt-3 font-display font-bold text-3xl sm:text-4xl lg:text-5xl tracking-tight text-ink">From oral spec or blueprint to an approved sample.</h2>
+          <p class="mt-4 text-muted text-base sm:text-lg">No finalised CAD file? Send a rough sketch, a worn sample, or an oral functional requirement. We generate the drawing, machine the sample, and only cut batch steel after your sign-off.</p>
+        </div>
+
+        <div class="mt-14 grid grid-cols-1 md:grid-cols-5 gap-3" data-reveal>
+          <div class="relative bg-surface border border-line rounded-sm p-5 group hover:border-accent transition-colors"><div class="flex items-center justify-between mb-4"><span class="font-mono text-[10px] font-bold text-accent tracking-wider">STAGE 01</span><span class="font-mono text-[9px] text-subtle uppercase">Intake</span></div><h3 class="font-display font-bold text-base text-ink leading-tight">Drawing, sample, or oral spec</h3><p class="mt-2 text-xs text-muted leading-relaxed">Send a formal 2D/3D print, a physical worn sample, or a verbal functional requirement to our Bengaluru toolroom.</p></div>
+          <div class="relative bg-surface border border-line rounded-sm p-5 group hover:border-accent transition-colors"><div class="flex items-center justify-between mb-4"><span class="font-mono text-[10px] font-bold text-accent tracking-wider">STAGE 02</span><span class="font-mono text-[9px] text-subtle uppercase">CAD</span></div><h3 class="font-display font-bold text-base text-ink leading-tight">Drawing generation</h3><p class="mt-2 text-xs text-muted leading-relaxed">For oral or sample-driven jobs, we produce the full engineering drawing internally with tolerance and material callouts.</p></div>
+          <div class="relative bg-surface border border-line rounded-sm p-5 group hover:border-accent transition-colors"><div class="flex items-center justify-between mb-4"><span class="font-mono text-[10px] font-bold text-accent tracking-wider">STAGE 03</span><span class="font-mono text-[9px] text-subtle uppercase">Sign-off</span></div><h3 class="font-display font-bold text-base text-ink leading-tight">Customer confirmation</h3><p class="mt-2 text-xs text-muted leading-relaxed">The drawing is submitted to your QA or R&amp;D team for dimensional verification and formal sign-off.</p></div>
+          <div class="relative bg-surface border border-line rounded-sm p-5 group hover:border-accent transition-colors"><div class="flex items-center justify-between mb-4"><span class="font-mono text-[10px] font-bold text-accent tracking-wider">STAGE 04</span><span class="font-mono text-[9px] text-subtle uppercase">Prototype</span></div><h3 class="font-display font-bold text-base text-ink leading-tight">Physical sample fabrication</h3><p class="mt-2 text-xs text-muted leading-relaxed">Upon confirmation, we machine, harden, and precision-grind initial sample parts for fitment testing at your facility.</p></div>
+          <div class="relative bg-ink text-bg rounded-sm p-5 group"><div class="flex items-center justify-between mb-4"><span class="font-mono text-[10px] font-bold text-accent tracking-wider">STAGE 05</span><span class="font-mono text-[9px] text-bg/60 uppercase">Production</span></div><h3 class="font-display font-bold text-base leading-tight">Batch consignment</h3><p class="mt-2 text-xs text-bg/70 leading-relaxed">Only after sample approval do we proceed to batch production — delivered in consignment sizes tailored to your schedule.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="capabilities" class="py-20 lg:py-28 bg-surface2 border-y border-line">
+      <div class="max-w-8xl mx-auto px-5 sm:px-8">
+        <div class="max-w-3xl" data-reveal>
+          <div class="font-mono text-[11px] uppercase tracking-widest text-accent font-semibold">— 04 · Manufacturing Capabilities</div>
+          <h2 class="mt-3 font-display font-bold text-3xl sm:text-4xl lg:text-5xl tracking-tight text-ink">A working toolroom, not a catalogue page.</h2>
+          <p class="mt-4 text-muted text-base sm:text-lg">The processes below reflect the manufacturing footprint required to produce Meru Precision's published portfolio. A full plant-and-machinery inventory (make, model, capacity, accuracy) is currently <span class="font-mono text-xs text-accent">[TO CONFIRM]</span> and will be published once supplied by the client.</p>
+        </div>
+
+        <div class="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4" data-reveal>
+          <div class="bg-surface border border-line rounded-sm overflow-hidden"><div class="img-ph aspect-[4/3] rounded-none border-0 border-b border-dashed border-line-strong"><div class="img-ph-inner"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6V4m0 16v-2m8-8h2M4 12H2m15.07-6.07l1.42-1.42M5.51 17.49l-1.42 1.42m14.98 0l-1.42-1.42M5.51 6.51L4.09 5.09M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg><span class="ph-label">CNC Turning</span><code class="ph-path">/assets/images/company/turning.jpg</code></div></div><div class="p-5"><h3 class="font-display font-bold text-base text-ink">CNC Turning &amp; Milling</h3><p class="mt-1.5 text-xs text-muted leading-relaxed">Shaft turning, thread cutting, and bored components — the base for plug gauges, lead screws, and pin gauges.</p><div class="mt-3 font-mono text-[9px] uppercase tracking-wider text-subtle">Machine list <span class="text-accent">[TO CONFIRM]</span></div></div></div>
+          <div class="bg-surface border border-line rounded-sm overflow-hidden"><div class="img-ph aspect-[4/3] rounded-none border-0 border-b border-dashed border-line-strong"><div class="img-ph-inner"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 12a8 8 0 018-8V2m0 20a8 8 0 008-8h-2M4 12a8 8 0 008 8v2"/></svg><span class="ph-label">Cylindrical &amp; Surface Grinding</span><code class="ph-path">/assets/images/company/grinding.jpg</code></div></div><div class="p-5"><h3 class="font-display font-bold text-base text-ink">Grinding</h3><p class="mt-1.5 text-xs text-muted leading-relaxed">Cylindrical, surface, and form grinding to achieve micron-level surface finishes and hardened tool steel dimensions.</p><div class="mt-3 font-mono text-[9px] uppercase tracking-wider text-subtle">Machine list <span class="text-accent">[TO CONFIRM]</span></div></div></div>
+          <div class="bg-surface border border-line rounded-sm overflow-hidden"><div class="img-ph aspect-[4/3] rounded-none border-0 border-b border-dashed border-line-strong"><div class="img-ph-inner"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.777 17.656 7.343A7.975 7.975 0 0120 13a7.975 7.975 0 01-2.343 5.657z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.879 16.121A3 3 0 1012.015 11L11 14H9c0 .768.293 1.536.879 2.121z"/></svg><span class="ph-label">Hardening &amp; Tempering</span><code class="ph-path">/assets/images/company/heat-treatment.jpg</code></div></div><div class="p-5"><h3 class="font-display font-bold text-base text-ink">Heat Treatment</h3><p class="mt-1.5 text-xs text-muted leading-relaxed">Hardening and tempering of gauge-grade tool steel, targeting 58–62 HRC on applicable parts. Sub-zero stabilisation as per part spec.</p><div class="mt-3 font-mono text-[9px] uppercase tracking-wider text-subtle">Furnace spec <span class="text-accent">[TO CONFIRM]</span></div></div></div>
+          <div class="bg-surface border border-line rounded-sm overflow-hidden"><div class="img-ph aspect-[4/3] rounded-none border-0 border-b border-dashed border-line-strong"><div class="img-ph-inner"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 17V7m0 10a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2h2a2 2 0 012 2m0 10a2 2 0 002 2h2a2 2 0 002-2M9 7a2 2 0 012-2h2a2 2 0 012 2m0 10V7m0 10a2 2 0 002 2h2a2 2 0 002-2V7a2 2 0 00-2-2h-2a2 2 0 00-2 2"/></svg><span class="ph-label">Inspection &amp; Metrology</span><code class="ph-path">/assets/images/company/inspection-lab.jpg</code></div></div><div class="p-5"><h3 class="font-display font-bold text-base text-ink">Inspection &amp; Metrology</h3><p class="mt-1.5 text-xs text-muted leading-relaxed">Dimensional verification of finished parts against the approved drawing. Instruments: profile projector, CMM, micrometers, comparators. <span class="text-accent font-mono text-[9px]">[INSTRUMENT LIST TO CONFIRM]</span></p></div></div>
+        </div>
+
+        <div class="mt-6 grid grid-cols-1 md:grid-cols-2 gap-4" data-reveal>
+          <div class="img-ph aspect-[16/9]"><div class="img-ph-inner"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg><span class="ph-label">Shop Floor — Wide</span><code class="ph-path">/assets/images/company/shopfloor-01.jpg</code></div></div>
+          <div class="img-ph aspect-[16/9]"><div class="img-ph-inner"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/></svg><span class="ph-label">Team at the Toolroom</span><code class="ph-path">/assets/images/company/team-01.jpg</code></div></div>
+        </div>
+
+        <div class="mt-6 bg-surface border-l-4 border-accent p-4 rounded-sm" data-reveal>
+          <p class="text-xs text-muted leading-relaxed"><strong class="text-ink">Note for the client:</strong> Please supply (a) the full plant &amp; machinery list — make, model, capacity, accuracy — and (b) the inspection instrument inventory. These will be published in this section. Capacity figures have been intentionally omitted rather than invented.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="quality" class="py-20 lg:py-28 bg-bg">
+      <div class="max-w-8xl mx-auto px-5 sm:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
+          <div class="lg:col-span-5" data-reveal>
+            <div class="font-mono text-[11px] uppercase tracking-widest text-accent font-semibold">— 05 · Quality Assurance</div>
+            <h2 class="mt-3 font-display font-bold text-3xl sm:text-4xl lg:text-5xl tracking-tight text-ink">Built to your print. Verified before dispatch.</h2>
+            <p class="mt-5 text-muted text-base leading-relaxed">Every part we produce is measured against the approved drawing before it leaves the toolroom. For metrology gauges, conformity is demonstrated through Go/No-Go functional verification plus dimensional inspection of the master feature.</p>
+            <p class="mt-4 text-muted text-base leading-relaxed">Material certificates and calibration reports can be issued on request.</p>
+            <div class="mt-6 bg-surface border-l-4 border-accent p-4 rounded-sm">
+              <div class="font-mono text-[10px] uppercase tracking-wider text-accent font-bold mb-1">Certification status</div>
+              <p class="text-xs text-muted leading-relaxed">ISO 9001:2015, AS9100, and NABL calibration traceability are <span class="font-mono text-accent">[TO CONFIRM]</span> pending client documentation.</p>
+            </div>
+          </div>
+
+          <div class="lg:col-span-7" data-reveal>
+            <div class="space-y-3">
+              <details class="group bg-surface border border-line rounded-sm p-5 open:border-accent transition-colors" open>
+                <summary class="flex items-center justify-between"><div class="flex items-center gap-3"><span class="font-mono text-[10px] font-bold text-accent">QA-01</span><h3 class="font-display font-bold text-base text-ink">Drawing sign-off before metal is cut</h3></div><svg class="chev w-4 h-4 text-muted transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg></summary>
+                <p class="mt-3 text-sm text-muted leading-relaxed pl-0 sm:pl-14">No manufacturing order proceeds to production until the technical drawing has been formally signed off by the buyer's QA or R&amp;D team.</p>
+              </details>
+              <details class="group bg-surface border border-line rounded-sm p-5 open:border-accent transition-colors">
+                <summary class="flex items-center justify-between"><div class="flex items-center gap-3"><span class="font-mono text-[10px] font-bold text-accent">QA-02</span><h3 class="font-display font-bold text-base text-ink">Sample approval before batch</h3></div><svg class="chev w-4 h-4 text-muted transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg></summary>
+                <p class="mt-3 text-sm text-muted leading-relaxed pl-0 sm:pl-14">Prototype parts are machined and shipped for physical fitment and metrology validation at the customer's facility. Batch production only begins after written sample approval.</p>
+              </details>
+              <details class="group bg-surface border border-line rounded-sm p-5 open:border-accent transition-colors">
+                <summary class="flex items-center justify-between"><div class="flex items-center gap-3"><span class="font-mono text-[10px] font-bold text-accent">QA-03</span><h3 class="font-display font-bold text-base text-ink">Hardness &amp; material verification</h3></div><svg class="chev w-4 h-4 text-muted transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg></summary>
+                <p class="mt-3 text-sm text-muted leading-relaxed pl-0 sm:pl-14">Gauge-grade steel is heat-treated and hardness-tested. Where specified, hardness of 58–62 HRC is confirmed on a per-lot basis. Material test certificates can be issued with dispatch.</p>
+              </details>
+              <details class="group bg-surface border border-line rounded-sm p-5 open:border-accent transition-colors">
+                <summary class="flex items-center justify-between"><div class="flex items-center gap-3"><span class="font-mono text-[10px] font-bold text-accent">QA-04</span><h3 class="font-display font-bold text-base text-ink">Dimensional inspection report</h3></div><svg class="chev w-4 h-4 text-muted transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg></summary>
+                <p class="mt-3 text-sm text-muted leading-relaxed pl-0 sm:pl-14">Critical dimensions are measured against the drawing and recorded. A dimensional inspection report is supplied with the dispatch for metrology gauge orders. <span class="font-mono text-[10px] text-accent">[REPORT TEMPLATE TO CONFIRM]</span></p>
+              </details>
+              <details class="group bg-surface border border-line rounded-sm p-5 open:border-accent transition-colors">
+                <summary class="flex items-center justify-between"><div class="flex items-center gap-3"><span class="font-mono text-[10px] font-bold text-accent">QA-05</span><h3 class="font-display font-bold text-base text-ink">Calibration traceability</h3></div><svg class="chev w-4 h-4 text-muted transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg></summary>
+                <p class="mt-3 text-sm text-muted leading-relaxed pl-0 sm:pl-14">Reference masters are periodically verified. NABL-accredited calibration certificates can be arranged on request — status of in-house NABL traceability is <span class="font-mono text-[10px] text-accent">[TO CONFIRM]</span>.</p>
+              </details>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="industries" class="py-20 lg:py-28 bg-surface2 border-y border-line">
+      <div class="max-w-8xl mx-auto px-5 sm:px-8">
+        <div class="max-w-3xl" data-reveal>
+          <div class="font-mono text-[11px] uppercase tracking-widest text-accent font-semibold">— 06 · Industries &amp; Clients</div>
+          <h2 class="mt-3 font-display font-bold text-3xl sm:text-4xl lg:text-5xl tracking-tight text-ink">Six sectors. Twenty-three documented OEM clients.</h2>
+          <p class="mt-4 text-muted text-base sm:text-lg">Our gauges, fixtures, and machined components operate on the shop floors of some of India's most respected industrial names. All 23 listed clients are published on our website; misspellings in the previous site have been corrected.</p>
+        </div>
+
+        <div class="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4" data-reveal>
+          <div class="bg-surface border border-line p-6 rounded-sm"><div class="font-mono text-[10px] text-accent font-bold mb-2">SECTOR 01</div><h3 class="font-display font-bold text-lg text-ink">Aerospace &amp; Defense</h3><p class="mt-2 text-sm text-muted leading-relaxed">Profile plug gauges, contour inspection tools, ruggedized PCB wedge locks, and machined heat sinks for avionics chassis.</p></div>
+          <div class="bg-surface border border-line p-6 rounded-sm"><div class="font-mono text-[10px] text-accent font-bold mb-2">SECTOR 02</div><h3 class="font-display font-bold text-lg text-ink">Automotive &amp; Tier‑1</h3><p class="mt-2 text-sm text-muted leading-relaxed">Rotary speedometer cable swaging machines, runout gauges, snap gauges, and assembly-line fixtures for high-volume production.</p></div>
+          <div class="bg-surface border border-line p-6 rounded-sm"><div class="font-mono text-[10px] text-accent font-bold mb-2">SECTOR 03</div><h3 class="font-display font-bold text-lg text-ink">Hydraulics &amp; Fluid Power</h3><p class="mt-2 text-sm text-muted leading-relaxed">Plain plug, ring, and taper gauges for hydraulic cylinder bores, spools, and flexible hose fittings.</p></div>
+          <div class="bg-surface border border-line p-6 rounded-sm"><div class="font-mono text-[10px] text-accent font-bold mb-2">SECTOR 04</div><h3 class="font-display font-bold text-lg text-ink">Agriculture &amp; Forgings</h3><p class="mt-2 text-sm text-muted leading-relaxed">Shop-floor Go/No-Go inspection gauges and heavy machining jigs for tractor and closed-die forging manufacturers.</p></div>
+          <div class="bg-surface border border-line p-6 rounded-sm"><div class="font-mono text-[10px] text-accent font-bold mb-2">SECTOR 05</div><h3 class="font-display font-bold text-lg text-ink">Granite Processing</h3><p class="mt-2 text-sm text-muted leading-relaxed">Heavy-duty Phosphorous Bronze (PB) bearing rings engineered for high-load Granite Gang Saw cutting machines.</p></div>
+          <div class="bg-surface border border-line p-6 rounded-sm"><div class="font-mono text-[10px] text-accent font-bold mb-2">SECTOR 06</div><h3 class="font-display font-bold text-lg text-ink">Electronics &amp; Intralogistics</h3><p class="mt-2 text-sm text-muted leading-relaxed">Custom lead screws and lead nuts, thermal management heat sinks, and automated material handling tooling.</p></div>
+        </div>
+
+        <div class="mt-16" data-reveal>
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
+            <h3 class="font-display font-bold text-2xl text-ink">Documented client roster</h3>
+            <div class="flex flex-wrap gap-2" role="tablist" aria-label="Client sector filter">
+              <button class="client-btn" data-sector="all" type="button" role="tab" aria-selected="true">All 23</button>
+              <button class="client-btn" data-sector="Automotive" type="button" role="tab">Automotive</button>
+              <button class="client-btn" data-sector="Aerospace" type="button" role="tab">Aerospace &amp; Defense</button>
+              <button class="client-btn" data-sector="Hydraulics" type="button" role="tab">Hydraulics</button>
+              <button class="client-btn" data-sector="Engineering" type="button" role="tab">Engineering</button>
+            </div>
+          </div>
+          <div id="client-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="gallery" class="py-20 lg:py-28 bg-bg">
+      <div class="max-w-8xl mx-auto px-5 sm:px-8">
+        <div class="max-w-3xl" data-reveal>
+          <div class="font-mono text-[11px] uppercase tracking-widest text-accent font-semibold">— 07 · Gallery</div>
+          <h2 class="mt-3 font-display font-bold text-3xl sm:text-4xl lg:text-5xl tracking-tight text-ink">Inside the toolroom.</h2>
+          <p class="mt-4 text-muted text-base">Drop the following files into <code class="font-mono text-xs bg-surface border border-line px-1.5 py-0.5 rounded-sm">/assets/images/company/</code> to populate this gallery. Each placeholder shows its exact target filename.</p>
+        </div>
+
+        <div class="mt-10 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3" data-reveal>
+          <div class="img-ph aspect-square"><div class="img-ph-inner"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg><span class="ph-label">Shop Floor</span><code class="ph-path">/assets/images/company/shopfloor-02.jpg</code></div></div>
+          <div class="img-ph aspect-square"><div class="img-ph-inner"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg><span class="ph-label">Grinding Section</span><code class="ph-path">/assets/images/company/grinding-02.jpg</code></div></div>
+          <div class="img-ph aspect-square"><div class="img-ph-inner"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg><span class="ph-label">Inspection Bench</span><code class="ph-path">/assets/images/company/inspection-lab-02.jpg</code></div></div>
+          <div class="img-ph aspect-square"><div class="img-ph-inner"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg><span class="ph-label">Finished Gauges</span><code class="ph-path">/assets/images/company/finished-gauges.jpg</code></div></div>
+          <div class="img-ph aspect-square"><div class="img-ph-inner"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg><span class="ph-label">Swaging Machine</span><code class="ph-path">/assets/images/company/swaging-machine.jpg</code></div></div>
+          <div class="img-ph aspect-square"><div class="img-ph-inner"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg><span class="ph-label">Team at Work</span><code class="ph-path">/assets/images/company/team-02.jpg</code></div></div>
+          <div class="img-ph aspect-square"><div class="img-ph-inner"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg><span class="ph-label">Exterior Signboard</span><code class="ph-path">/assets/images/company/exterior-signboard.jpg</code></div></div>
+          <div class="img-ph aspect-square"><div class="img-ph-inner"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg><span class="ph-label">Packaging &amp; Dispatch</span><code class="ph-path">/assets/images/company/packaging-dispatch.jpg</code></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="py-20 lg:py-28 bg-surface2 border-t border-line">
+      <div class="max-w-8xl mx-auto px-5 sm:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14">
+          <div class="lg:col-span-5 space-y-5" data-reveal>
+            <div>
+              <div class="font-mono text-[11px] uppercase tracking-widest text-accent font-semibold">— 08 · Contact</div>
+              <h2 class="mt-3 font-display font-bold text-3xl sm:text-4xl lg:text-5xl tracking-tight text-ink">Discuss your tolerance and tooling requirements.</h2>
+              <p class="mt-4 text-muted text-base">Connect directly with our engineering team in Rajajinagar for build-to-print quotations, gauge calibration inquiries, or custom sample development.</p>
+            </div>
+
+            <div class="bg-surface border border-line p-5 rounded-sm">
+              <div class="font-mono text-[10px] uppercase tracking-wider text-accent font-bold mb-2">Manufacturing unit &amp; registered office</div>
+              <p class="font-display font-bold text-base text-ink">Meru Precision Industries</p>
+              <p class="text-sm text-muted mt-1.5 leading-relaxed">1706, Dr. Rajkumar Road, Prakash Nagar,<br />Rajajinagar, Bengaluru,<br />Karnataka – 560021, India</p>
+              <a href="https://maps.app.goo.gl/Yx8zkctrPCGUyiVB6" target="_blank" rel="noopener noreferrer" class="mt-3 inline-flex items-center gap-1.5 text-sm font-semibold text-accent hover:text-accent-hover transition-colors">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                Open in Google Maps
+              </a>
+            </div>
+
+            <div class="bg-surface border border-line p-5 rounded-sm grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div><div class="font-mono text-[10px] uppercase tracking-wider text-subtle">Mobile / WhatsApp</div><a href="tel:+919986465377" class="font-display font-bold text-base text-ink hover:text-accent transition-colors block mt-1">+91 99864 65377</a></div>
+              <div><div class="font-mono text-[10px] uppercase tracking-wider text-subtle">Landline</div><a href="tel:08048091287" class="font-display font-bold text-base text-ink hover:text-accent transition-colors block mt-1">080-48091287</a></div>
+            </div>
+
+            <div class="bg-surface border border-line p-5 rounded-sm">
+              <div class="font-mono text-[10px] uppercase tracking-wider text-subtle mb-2">Email</div>
+              <div class="space-y-1.5">
+                <a href="mailto:merushiv@gmail.com" class="flex items-center justify-between text-sm text-ink hover:text-accent transition-colors bg-surface2 px-3 py-2 rounded-sm border border-line"><span class="font-mono">merushiv@gmail.com</span><span class="text-[10px] font-mono uppercase text-accent">Primary</span></a>
+                <a href="mailto:merushiv@yahoo.com" class="flex items-center justify-between text-sm text-ink hover:text-accent transition-colors bg-surface2 px-3 py-2 rounded-sm border border-line"><span class="font-mono">merushiv@yahoo.com</span><span class="text-[10px] font-mono uppercase text-subtle">Alternate</span></a>
+              </div>
+            </div>
+
+            <div class="bg-surface border-l-4 border-accent p-4 rounded-sm">
+              <div class="font-mono text-[10px] uppercase tracking-wider text-accent font-bold mb-1">Operating hours</div>
+              <p class="text-xs text-muted leading-relaxed">Standard working hours: <span class="text-ink font-semibold">Monday – Saturday</span>. Exact timings and Sunday/holiday policy <span class="font-mono text-accent">[TO CONFIRM]</span>.</p>
+            </div>
+          </div>
+
+          <div class="lg:col-span-7" data-reveal>
+            <div class="bg-surface border border-line rounded-sm p-6 sm:p-8">
+              <div class="flex items-start justify-between gap-4 pb-5 border-b border-line mb-6">
+                <div>
+                  <div class="font-mono text-[10px] uppercase tracking-wider text-accent">Technical enquiry</div>
+                  <h3 class="mt-1 font-display font-bold text-xl text-ink">Request a quote or a sample run</h3>
+                </div>
+                <span class="hidden sm:inline-flex items-center gap-1.5 font-mono text-[10px] uppercase tracking-wider text-subtle bg-surface2 border border-line px-2.5 py-1.5 rounded-sm">
+                  <span class="w-1.5 h-1.5 rounded-full bg-green-500"></span>Direct to engineering
+                </span>
+              </div>
+
+              <form id="rfq-form" novalidate class="space-y-5">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div><label for="rfq-name" class="block font-mono text-[10px] uppercase tracking-wider text-muted mb-1.5">Your name *</label><input id="rfq-name" name="name" type="text" required minlength="2" autocomplete="name" placeholder="e.g. Ramesh Kumar" class="form-input" /><span class="error-msg">Please enter your full name.</span></div>
+                  <div><label for="rfq-company" class="block font-mono text-[10px] uppercase tracking-wider text-muted mb-1.5">Company / OEM *</label><input id="rfq-company" name="company" type="text" required minlength="2" autocomplete="organization" placeholder="e.g. Suprajit / TAFE / Custom" class="form-input" /><span class="error-msg">Please enter your company name.</span></div>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div><label for="rfq-phone" class="block font-mono text-[10px] uppercase tracking-wider text-muted mb-1.5">Phone / WhatsApp *</label><input id="rfq-phone" name="phone" type="tel" required autocomplete="tel" placeholder="+91 98XXX XXXXX" class="form-input" /><span class="error-msg">Enter a valid 10-digit Indian number.</span></div>
+                  <div><label for="rfq-email" class="block font-mono text-[10px] uppercase tracking-wider text-muted mb-1.5">Corporate email *</label><input id="rfq-email" name="email" type="email" required autocomplete="email" placeholder="name@company.com" class="form-input" /><span class="error-msg">Enter a valid email address.</span></div>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div>
+                    <label for="rfq-product" class="block font-mono text-[10px] uppercase tracking-wider text-muted mb-1.5">Product / gauge line *</label>
+                    <select id="rfq-product" name="product" required class="form-input">
+                      <option value="">— Select a product —</option>
+                      <option>Taper Plug / Ring Gauge</option>
+                      <option>Snap Gauge</option>
+                      <option>Plain Ring Gauge</option>
+                      <option>Profile Plug Gauge</option>
+                      <option>Plain Plug Gauge</option>
+                      <option>Pin Gauge</option>
+                      <option>Runout Checking Gauge</option>
+                      <option>Assembly Fixture</option>
+                      <option>Jigs and Fixtures</option>
+                      <option>Lead Nut</option>
+                      <option>Lead Screw and Nut</option>
+                      <option>Brass Ring / Phosphorous Bronze Ring</option>
+                      <option>PCB Wedge Lock</option>
+                      <option>Heat Sink</option>
+                      <option>Rotary Speedometer Cable Swaging Machine</option>
+                      <option>Multiple items / Custom tooling</option>
+                    </select>
+                    <span class="error-msg">Please choose a product line.</span>
+                  </div>
+                  <div>
+                    <label for="rfq-spec" class="block font-mono text-[10px] uppercase tracking-wider text-muted mb-1.5">Specification format *</label>
+                    <select id="rfq-spec" name="spec_format" required class="form-input">
+                      <option value="">— Select one —</option>
+                      <option>Formal 2D/3D engineering drawing</option>
+                      <option>Physical sample part for reverse engineering</option>
+                      <option>Oral/functional spec — needs Meru CAD drawing</option>
+                    </select>
+                    <span class="error-msg">Please choose a specification format.</span>
+                  </div>
+                </div>
+
+                <div><label for="rfq-notes" class="block font-mono text-[10px] uppercase tracking-wider text-muted mb-1.5">Dimensions, tolerances, material &amp; batch size</label><textarea id="rfq-notes" name="notes" rows="3" placeholder="Nominal dimensions (mm), tolerance (H7/g6), material (EN31/OHNS/Carbide/PB), required batch quantity…" class="form-input"></textarea></div>
+
+                <div class="bg-surface2 border border-line rounded-sm p-3.5 flex items-start gap-3">
+                  <svg class="w-4 h-4 text-accent shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                  <p class="text-xs text-muted leading-relaxed"><strong class="text-ink">To attach drawings:</strong> after generating your email below, attach your CAD/PDF file directly. Or send your drawing via WhatsApp to <a href="https://wa.me/919986465377" target="_blank" rel="noopener noreferrer" class="text-accent hover:underline">+91 99864 65377</a>.</p>
+                </div>
+
+                <div class="flex flex-col sm:flex-row gap-3 pt-1">
+                  <button type="submit" class="flex-1 inline-flex items-center justify-center gap-2 bg-accent hover:bg-accent-hover text-bg font-display font-semibold text-sm uppercase tracking-wider px-6 py-3.5 rounded-sm transition-colors">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                    Prepare email RFQ
+                  </button>
+                  <button type="button" id="rfq-whatsapp" class="inline-flex items-center justify-center gap-2 bg-green-600 hover:bg-green-700 text-white font-display font-semibold text-sm uppercase tracking-wider px-6 py-3.5 rounded-sm transition-colors">
+                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+                    WhatsApp
+                  </button>
+                </div>
+
+                <div id="rfq-feedback" class="hidden p-3.5 bg-green-500/10 border border-green-500/30 text-xs font-mono text-green-700 dark:text-green-300 rounded-sm"></div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="bg-ink text-bg/70 pt-16 pb-8">
+    <div class="max-w-8xl mx-auto px-5 sm:px-8">
+      <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-12 gap-8 pb-12 border-b border-bg/10">
+        <div class="col-span-2 lg:col-span-4">
+          <div class="flex items-center gap-3">
+            <div class="w-9 h-9 border border-bg/30 flex items-center justify-center rounded-sm"><span class="font-display font-bold text-accent text-sm">M</span></div>
+            <div><div class="font-display font-bold text-bg text-sm tracking-tight">MERU PRECISION INDUSTRIES</div><div class="font-mono text-[9px] uppercase tracking-[0.2em] text-bg/50 mt-0.5">Est. 1983 · Bengaluru</div></div>
+          </div>
+          <p class="text-sm text-bg/60 mt-4 leading-relaxed max-w-md">Precision metrology gauges, jigs &amp; fixtures, linear motion components, electronic hardware, and rotary speedometer cable swaging machines. Build-to-print and reverse-engineering partner to Tier‑1 automotive, aerospace, hydraulics, and heavy engineering OEMs.</p>
+          <div class="font-mono text-[11px] text-bg/50 space-y-1 mt-5">
+            <div><span class="text-accent">ADDR</span> · 1706, Dr. Rajkumar Road, Prakash Nagar, Rajajinagar, Bengaluru 560021</div>
+            <div><span class="text-accent">TEL</span> · 080-48091287 · +91 9986465377</div>
+            <div><span class="text-accent">MAIL</span> · merushiv@gmail.com · merushiv@yahoo.com</div>
+          </div>
+        </div>
+
+        <div class="col-span-1 lg:col-span-3">
+          <div class="font-mono text-[10px] uppercase tracking-wider text-bg font-bold mb-3">Metrology gauges</div>
+          <ul class="space-y-2 text-sm">
+            <li><a href="#products" data-product="MPI-G01" class="footer-link">Taper Plug / Ring Gauge</a></li>
+            <li><a href="#products" data-product="MPI-G02" class="footer-link">Snap Gauge</a></li>
+            <li><a href="#products" data-product="MPI-G03" class="footer-link">Plain Ring Gauge</a></li>
+            <li><a href="#products" data-product="MPI-G04" class="footer-link">Profile Plug Gauge</a></li>
+            <li><a href="#products" data-product="MPI-G05" class="footer-link">Plain Plug Gauge</a></li>
+            <li><a href="#products" data-product="MPI-G06" class="footer-link">Pin Gauge</a></li>
+            <li><a href="#products" data-product="MPI-G07" class="footer-link">Runout Checking Gauge</a></li>
+          </ul>
+        </div>
+
+        <div class="col-span-1 lg:col-span-3">
+          <div class="font-mono text-[10px] uppercase tracking-wider text-bg font-bold mb-3">Tooling, hardware &amp; SPMs</div>
+          <ul class="space-y-2 text-sm">
+            <li><a href="#products" data-product="MPI-T01" class="footer-link">Assembly Fixture</a></li>
+            <li><a href="#products" data-product="MPI-T02" class="footer-link">Jigs and Fixtures</a></li>
+            <li><a href="#products" data-product="MPI-L01" class="footer-link">Lead Nut</a></li>
+            <li><a href="#products" data-product="MPI-L02" class="footer-link">Lead Screw and Nut</a></li>
+            <li><a href="#products" data-product="MPI-L03" class="footer-link">Brass Ring / PB Ring</a></li>
+            <li><a href="#products" data-product="MPI-E01" class="footer-link">PCB Wedge Lock</a></li>
+            <li><a href="#products" data-product="MPI-E02" class="footer-link">Heat Sink</a></li>
+            <li><a href="#products" data-product="MPI-S01" class="footer-link">Rotary Swaging Machine</a></li>
+          </ul>
+        </div>
+
+        <div class="col-span-2 lg:col-span-2">
+          <div class="font-mono text-[10px] uppercase tracking-wider text-bg font-bold mb-3">Company</div>
+          <ul class="space-y-2 text-sm">
+            <li><a href="#about" class="footer-link">About Us</a></li>
+            <li><a href="#capabilities" class="footer-link">Manufacturing</a></li>
+            <li><a href="#quality" class="footer-link">Quality Assurance</a></li>
+            <li><a href="#industries" class="footer-link">Industries &amp; Clients</a></li>
+            <li><a href="#gallery" class="footer-link">Gallery</a></li>
+            <li><a href="#contact" class="footer-link">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="pt-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 font-mono text-[11px] text-bg/40">
+        <div>© 1983–2026 Meru Precision Industries. All rights reserved.</div>
+        <div class="flex items-center gap-4"><a href="#home" class="hover:text-bg/80 transition-colors">Back to top ↑</a><span class="text-bg/20">·</span><span>Rajajinagar, Bengaluru</span></div>
+      </div>
+    </div>
+  </footer>
+
+  <dialog id="product-modal" aria-labelledby="modal-title">
+    <div class="bg-surface text-ink rounded-md overflow-hidden max-h-[90vh] flex flex-col">
+      <div class="flex items-start justify-between gap-4 p-5 border-b border-line sticky top-0 bg-surface z-10">
+        <div><div id="modal-code" class="font-mono text-[10px] uppercase tracking-wider text-accent"></div><h2 id="modal-title" class="font-display font-bold text-xl sm:text-2xl text-ink mt-0.5"></h2></div>
+        <button type="button" id="modal-close" class="w-9 h-9 flex items-center justify-center border border-line hover:bg-surface2 rounded-sm shrink-0" aria-label="Close product details"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg></button>
+      </div>
+      <div class="overflow-y-auto p-5">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div><div id="modal-hero-img" class="img-ph aspect-square mb-3"></div><div id="modal-thumbs" class="grid grid-cols-3 gap-2"></div></div>
+          <div>
+            <p id="modal-desc" class="text-sm text-muted leading-relaxed"></p>
+            <div class="mt-5"><h3 class="font-mono text-[10px] uppercase tracking-wider text-accent font-bold mb-2">Specifications</h3><dl id="modal-specs" class="space-y-1.5 text-xs border-t border-line"></dl></div>
+            <div class="mt-5"><h3 class="font-mono text-[10px] uppercase tracking-wider text-accent font-bold mb-2">Applications</h3><ul id="modal-apps" class="space-y-1 text-xs text-muted list-none"></ul></div>
+            <a href="#contact" id="modal-cta" class="mt-6 inline-flex items-center justify-center gap-2 w-full bg-accent hover:bg-accent-hover text-bg font-display font-semibold text-xs uppercase tracking-wider px-5 py-3 rounded-sm transition-colors">Enquire about this product →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </dialog>
+
+  <script>
+  (() => {
+    'use strict';
+
+    /* ══════════════════════════════════════════════════════════════════
+       STEP 1 — REVEAL ON SCROLL (set up FIRST so it always runs,
+       even if any later code throws)
+       ══════════════════════════════════════════════════════════════════ */
+    (function setupReveal() {
+      try {
+        const elements = document.querySelectorAll('[data-reveal]');
+        if (!elements.length) return;
+
+        if (typeof IntersectionObserver !== 'function') {
+          // Browser doesn't support IntersectionObserver — show everything
+          elements.forEach(el => el.classList.add('is-visible'));
+          return;
+        }
+
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('is-visible');
+              observer.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+
+        elements.forEach(el => observer.observe(el));
+      } catch (err) {
+        // Setup failed — remove the hide-on-load flag so content is visible
+        console.error('Meru: reveal setup failed, showing all content:', err);
+        document.documentElement.classList.remove('reveal-ready');
+        document.querySelectorAll('[data-reveal]').forEach(el => el.classList.add('is-visible'));
+      }
+    })();
+
+    /* ══════════════════════════════════════════════════════════════════
+       STEP 2 — THEME MANAGER
+       ══════════════════════════════════════════════════════════════════ */
+    try {
+      const THEME_KEY = 'meru-theme';
+      const html = document.documentElement;
+      const themeToggle = document.getElementById('theme-toggle');
+
+      if (themeToggle) {
+        const iconLight = themeToggle.querySelector('.theme-icon-light');
+        const iconDark = themeToggle.querySelector('.theme-icon-dark');
+
+        function applyTheme(theme) {
+          html.classList.add('no-transition');
+          html.setAttribute('data-theme', theme);
+          requestAnimationFrame(() => html.classList.remove('no-transition'));
+
+          if (iconLight && iconDark) {
+            if (theme === 'dark') {
+              iconLight.classList.add('hidden');
+              iconDark.classList.remove('hidden');
+              themeToggle.setAttribute('aria-label', 'Switch to light theme');
+            } else {
+              iconDark.classList.add('hidden');
+              iconLight.classList.remove('hidden');
+              themeToggle.setAttribute('aria-label', 'Switch to dark theme');
+            }
+          }
+
+          const meta = document.querySelector('meta[name="theme-color"]:not([media])');
+          if (meta) meta.setAttribute('content', theme === 'dark' ? '#0C0A09' : '#FAF9F7');
+        }
+
+        let saved = null;
+        try { saved = localStorage.getItem(THEME_KEY); } catch (e) { /* private mode */ }
+        applyTheme(saved === 'dark' ? 'dark' : 'light');
+
+        themeToggle.addEventListener('click', () => {
+          const current = html.getAttribute('data-theme');
+          const next = current === 'dark' ? 'light' : 'dark';
+          applyTheme(next);
+          try { localStorage.setItem(THEME_KEY, next); } catch (e) { /* ignore */ }
+        });
+      }
+    } catch (err) {
+      console.warn('Meru: theme setup skipped:', err);
+    }
+
+    /* ══════════════════════════════════════════════════════════════════
+       STEP 3 — MOBILE MENU + STICKY HEADER
+       ══════════════════════════════════════════════════════════════════ */
+    try {
+      const mobileBtn = document.getElementById('mobile-menu-btn');
+      const mobileMenu = document.getElementById('mobile-menu');
+
+      if (mobileBtn && mobileMenu) {
+        mobileBtn.addEventListener('click', () => {
+          const isOpen = !mobileMenu.classList.contains('hidden');
+          mobileMenu.classList.toggle('hidden');
+          mobileBtn.setAttribute('aria-expanded', String(!isOpen));
+          mobileBtn.setAttribute('aria-label', isOpen ? 'Open menu' : 'Close menu');
+        });
+
+        mobileMenu.querySelectorAll('a').forEach(link => {
+          link.addEventListener('click', () => {
+            mobileMenu.classList.add('hidden');
+            mobileBtn.setAttribute('aria-expanded', 'false');
+            mobileBtn.setAttribute('aria-label', 'Open menu');
+          });
+        });
+      }
+
+      const header = document.getElementById('site-header');
+      if (header) {
+        const onScroll = () => {
+          if (window.scrollY > 8) header.classList.add('shadow-[0_1px_0_0_rgb(var(--c-border))]');
+          else header.classList.remove('shadow-[0_1px_0_0_rgb(var(--c-border))]');
+        };
+        window.addEventListener('scroll', onScroll, { passive: true });
+        onScroll();
+      }
+    } catch (err) {
+      console.warn('Meru: mobile/header setup skipped:', err);
+    }
+
+    /* ══════════════════════════════════════════════════════════════════
+       STEP 4 — PRODUCT DATA
+       ══════════════════════════════════════════════════════════════════ */
+    const PRODUCTS = [
+      { id: 'MPI-G01', slug: 'mpi-g01-taper-gauge', name: 'Taper Plug / Ring Gauge', division: 'metrology', divisionLabel: 'Metrology',
+        summary: 'Verifies internal conical recesses and external tapered shafts against specified angular and diametral limits.',
+        description: 'Precision taper gauges for angular conformance. The plug member checks internal conical recesses, while the ring member checks external tapered shafts. Manufactured to specified Morse, metric, or custom angles, with hardened and lapped measuring surfaces for long service life.',
+        specs: [['Material', 'Hardened & ground tool steel'], ['Hardness', '58–62 HRC (typical) [TO CONFIRM]'], ['Taper types', 'Morse, metric, custom angular'], ['Standards', 'IS / DIN / customer print'], ['Surface finish', 'Lapped, micron-level [TO CONFIRM]']],
+        applications: ['Spindle bores', 'Machine tool tapers', 'Hydraulic fittings', 'Tool holding'] },
+      { id: 'MPI-G02', slug: 'mpi-g02-snap-gauge', name: 'Snap Gauge', division: 'metrology', divisionLabel: 'Metrology',
+        summary: 'Rapid Go/No-Go C-frame inspection of external diameters (OD) on shafts in high-volume production.',
+        description: 'C-frame limit gauge built for fast, repetitive pass/fail inspection of cylindrical outside diameters on shafts and turned parts. Available as single-ended or double-ended anvil configurations, fixed or adjustable, in a wide range of sizes.',
+        specs: [['Material', 'Hardened & stabilised tool steel'], ['Configuration', 'Single or double-ended anvils'], ['Adjustability', 'Fixed or adjustable (specify)'], ['Hardness', '58–62 HRC [TO CONFIRM]'], ['Standards', 'IS / DIN / customer print']],
+        applications: ['Shaft OD inspection', 'Pins and turned parts', 'High-volume automotive QC', 'Incoming inspection'] },
+      { id: 'MPI-G03', slug: 'mpi-g03-plain-ring-gauge', name: 'Plain Ring Gauge', division: 'metrology', divisionLabel: 'Metrology',
+        summary: 'Go/No-Go verification of external diameters against specified limits, with knurled grip and red-groove No-Go ID.',
+        description: 'Precision cylindrical master and limit ring gauge for verifying the external diameter of shafts, pins, and ground journals. Go member passes only conforming parts; No-Go member is marked with a red identification groove.',
+        specs: [['Material', 'Hardened tool steel'], ['Hardness', '58–62 HRC [TO CONFIRM]'], ['Sizes', 'Custom — per customer print'], ['Marking', 'Go / No-Go with red groove'], ['Standards', 'IS / DIN / customer print']],
+        applications: ['Cylindrical shaft grinding', 'Journal verification', 'Quality labs', 'Incoming inspection'] },
+      { id: 'MPI-G04', slug: 'mpi-g04-profile-plug-gauge', name: 'Profile Plug Gauge', division: 'metrology', divisionLabel: 'Metrology',
+        summary: 'Custom contour verification of complex internal geometries — splines, slots, and irregular profiles.',
+        description: 'Specialised limit gauge for inspecting complex internal geometries that cannot be verified by a round plug gauge. Contours are form-ground or Wire-EDM cut to match the customer CAD print, then hardened and lapped.',
+        specs: [['Material', 'Hardened tool steel'], ['Manufacturing', 'Wire-EDM / form grinding'], ['Geometry', 'Per customer CAD print'], ['Hardness', '58–62 HRC [TO CONFIRM]'], ['Standards', 'Customer print']],
+        applications: ['Aerospace components', 'Defense hardware', 'Splines and slots', 'Complex automotive parts'] },
+      { id: 'MPI-G05', slug: 'mpi-g05-plain-plug-gauge', name: 'Plain Plug Gauge', division: 'metrology', divisionLabel: 'Metrology',
+        summary: 'Go/No-Go inspection of internal diameter (ID), ovality, and bell-mouth of machined bores and holes.',
+        description: 'Double-ended or progressive cylindrical Go/No-Go limit gauge engineered to verify internal diameter, ovality, and bell-mouth conditions on machined bores. Hardened and precision-ground to specified tolerance bands (H6, H7, H8, or custom).',
+        specs: [['Material', 'Hardened & ground tool steel'], ['Hardness', '58–62 HRC'], ['Tolerance bands', 'H6 / H7 / H8 / custom'], ['Configuration', 'Double-ended or progressive'], ['Sizes', 'Custom — per customer print']],
+        applications: ['Internal bore inspection', 'Hydraulic blocks', 'Engine blocks', 'General bore QC'] },
+      { id: 'MPI-G06', slug: 'mpi-g06-pin-gauge', name: 'Pin Gauge', division: 'metrology', divisionLabel: 'Metrology',
+        summary: 'Hardened cylindrical pin for checking small hole sizes, slot widths, and hole-to-hole centre distances.',
+        description: 'Cylindrical measuring pin fabricated from hardened and lapped steel, with a tightly calibrated diameter. Used for checking small hole sizes, slot widths, and hole-to-hole centre distances where a full plug gauge is impractical.',
+        specs: [['Material', 'Hardened & lapped steel'], ['Surface finish', 'Micron-level, lapped'], ['Tolerance class', 'Class Z / X / custom [TO CONFIRM]'], ['Sizes', 'Custom diameters'], ['Standards', 'IS / DIN / customer print']],
+        applications: ['Tool rooms', 'Micro-machining QC', 'Connector and PCB inspection', 'Slot width verification'] },
+      { id: 'MPI-G07', slug: 'mpi-g07-runout-gauge', name: 'Runout Checking Gauge', division: 'metrology', divisionLabel: 'Metrology',
+        summary: 'Bench-top concentricity and TIR inspection fixture with V-block or centre supports for rotating components.',
+        description: 'Dedicated bench-top inspection fixture for measuring circular or total indicated runout (TIR) on rotating components. Configured with high-precision centres or V-supports and a dial-indicator mounting arm; custom shaft lengths and diameters accommodated.',
+        specs: [['Supports', 'Centres or V-blocks'], ['Indicator', 'Standard dial indicator mount'], ['Capacity', 'Custom shaft length and diameter'], ['Base', 'Rigid, stress-relieved'], ['Standards', 'Customer print [TO CONFIRM]']],
+        applications: ['Transmission shafts', 'Rotors and gears', 'Aerospace rotating parts', 'Concentricity verification'] },
+      { id: 'MPI-T01', slug: 'mpi-t01-assembly-fixture', name: 'Assembly Fixture', division: 'tooling', divisionLabel: 'Jigs & Fixtures',
+        summary: 'Repeatable production assembly fixtures with Poka-Yoke alignment and quick-clamping for error-free assembly.',
+        description: 'High-accuracy assembly fixtures custom-engineered to guarantee repeatable part orientation, reduced cycle times, and Poka-Yoke alignment on industrial lines. Designed and manufactured using standard gauge-design and tool-design practices, built on stress-relieved bases with hardened locating pins.',
+        specs: [['Design', 'Custom per part and line'], ['Locating', 'Hardened pins and blocks'], ['Clamping', 'Quick-clamps / toggle clamps'], ['Base', 'Stress-relieved, rigid'], ['Standards', 'Customer print']],
+        applications: ['Automotive sub-assemblies', 'Aerospace assembly', 'Industrial assembly lines', 'Poka-Yoke stations'] },
+      { id: 'MPI-T02', slug: 'mpi-t02-jigs-fixtures', name: 'Jigs and Fixtures', division: 'tooling', divisionLabel: 'Jigs & Fixtures',
+        summary: 'Bespoke workholding and drilling/machining jigs, built to customer drawing in consignment sizes.',
+        description: 'Specialised tools used in machining, assembly, and inspection operations, manufactured strictly to customer requirements and consignment sizes. Rigid stress-relieved bases with custom locating arrangements for VMC, milling, drilling, and inspection stations.',
+        specs: [['Design', 'Custom per drawing'], ['Type', 'Workholding, drilling, machining, inspection'], ['Base', 'Stress-relieved'], ['Batch size', 'Custom consignment'], ['Standards', 'Customer print']],
+        applications: ['CNC machining centres', 'Drilling operations', 'Inspection stations', 'Assembly workholding'] },
+      { id: 'MPI-L01', slug: 'mpi-l01-lead-nut', name: 'Lead Nut', division: 'linear', divisionLabel: 'Linear Motion',
+        summary: 'Custom-threaded transmission nut paired with a matching lead screw to convert rotary to linear motion.',
+        description: 'Mechanical transmission nut custom-made per customer drawing or oral requirement. Workflow: Meru produces the engineering drawing, customer confirms, sample parts are produced, sample approved, then batch production begins. Trapezoidal, Acme, or fully custom thread forms available.',
+        specs: [['Thread forms', 'Trapezoidal / Acme / custom'], ['Material', 'Bronze / steel per customer spec'], ['Matched to', 'Customer screw or Meru-supplied pair'], ['Workflow', 'Drawing → Sample → Batch'], ['Standards', 'Customer print']],
+        applications: ['Machine tools', 'Industrial actuators', 'Automation systems', 'Custom lead screws'] },
+      { id: 'MPI-L02', slug: 'mpi-l02-lead-screw-nut', name: 'Lead Screw and Nut', division: 'linear', divisionLabel: 'Linear Motion',
+        summary: 'Matched screw + nut assembly for backlash-controlled linear positioning under load.',
+        description: 'Complete matched linear motion assembly comprising a precision-machined lead screw shaft and mated nut for backlash-controlled linear positioning under load. Custom pitch, lead, length, and end-journal machining to suit the target machine.',
+        specs: [['Thread forms', 'Trapezoidal / Acme / custom'], ['Assembly', 'Matched screw + nut'], ['Customisation', 'Pitch, lead, length, end journals'], ['Workflow', 'Drawing → Sample → Batch'], ['Standards', 'Customer print']],
+        applications: ['Special purpose machines', 'Elevating tables', 'Presses', 'Linear actuators'] },
+      { id: 'MPI-L03', slug: 'mpi-l03-pb-ring', name: 'Brass Ring / PB Ring', division: 'linear', divisionLabel: 'Heavy Metallurgy',
+        summary: 'Heavy-duty Phosphorous Bronze bearing rings for Granite Gang Saw machines, withstanding shock and slurry.',
+        description: 'Heavy-duty Phosphorous Bronze (PB) and brass bearing rings engineered to withstand extreme shock, slurry, and reciprocating loads in Granite Gang Saw cutting machines. Precision bore and oil-groove machining to customer specification.',
+        specs: [['Material', 'Phosphorous Bronze (PB) / Brass'], ['Bore', 'Precision, per customer print'], ['Grooving', 'Oil-groove machining'], ['Batch size', 'Custom consignment'], ['Standards', 'Customer print']],
+        applications: ['Granite gang saw machines', 'Heavy reciprocating bearings', 'Abrasive environments'] },
+      { id: 'MPI-E01', slug: 'mpi-e01-wedge-lock', name: 'Wedge Lock', division: 'electronics', divisionLabel: 'Electronic Hardware',
+        summary: 'Multi-segment mechanical PCB retainers that expand laterally to lock cards into ruggedized chassis.',
+        description: 'Mechanical card retainers (Card Loks) that expand laterally to lock printed circuit boards into ruggedized chassis slots, while providing thermal transfer paths. Documented for five applications: PCB assembly, enclosure assembly, rack mounting, modular systems, and connector/cable clamping.',
+        specs: [['Material', 'Aluminium alloy / steel [TO CONFIRM]'], ['Applications', '5 documented use cases'], ['Profile', 'MIL-spec style'], ['Sizes', 'Custom lengths'], ['Standards', 'Customer print']],
+        applications: ['Avionics PCB assembly', 'Ruggedized enclosures', 'Defense rack mounting', 'Modular electronic chassis'] },
+      { id: 'MPI-E02', slug: 'mpi-e02-heat-sink', name: 'Heat Sink', division: 'electronics', divisionLabel: 'Electronic Hardware',
+        summary: 'Precision-machined thermal management components to dissipate heat from high-power processors and regulators.',
+        description: 'Precision-machined and finned thermal management components engineered to rapidly dissipate heat from high-power CPUs, GPUs, power transistors, and voltage regulators. High-conductivity aluminium or copper with custom mounting hole patterns.',
+        specs: [['Material', 'Aluminium / Copper'], ['Manufacturing', 'Precision machined'], ['Fin profile', 'Custom / per drawing'], ['Mounting', 'Custom hole patterns'], ['Standards', 'Customer print']],
+        applications: ['Power electronics', 'Industrial drives', 'Avionics', 'High-power CPU/GPU cooling'] },
+      { id: 'MPI-S01', slug: 'mpi-s01-swaging-machine', name: 'Rotary Speedometer Cable Swaging Machine', division: 'spm', divisionLabel: 'Special Purpose Machine',
+        summary: 'Rotary cold-forging SPM that forms round flexible cable ends into square drive profiles without heating.',
+        description: 'Purpose-built special-purpose machine engineered to cold-forge the round end of a flexible speedometer cable into a high-torque square drive profile without thermal distortion. Uses a rotary swaging sleeve with four carbide jaws moving radially; variable cable and square sizes accommodated.',
+        specs: [['Mechanism', 'Rotary swaging sleeve'], ['Jaws', '4 radial carbide jaws'], ['Process', 'Cold forging (no heating)'], ['Capacity', 'Variable cable and square sizes'], ['Standards', 'Customer application']],
+        applications: ['Speedometer cables', 'Flexible control cables', 'Automotive cable OEMs', 'Custom cable end-forming'] }
+    ];
+
+    // Each product has 4 image slots — derive paths once
+    const IMAGE_SLOTS = [
+      { label: 'Front view', path: 'front.jpg' },
+      { label: 'Side / profile', path: 'side.jpg' },
+      { label: 'Detail close-up', path: 'detail.jpg' },
+      { label: 'In application', path: 'application.jpg' }
+    ];
+
+    /* ══════════════════════════════════════════════════════════════════
+       STEP 5 — PRODUCT GRID RENDER + FILTER
+       ══════════════════════════════════════════════════════════════════ */
+    const PH_ICON_SVG = '<svg fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"/></svg>';
+
+    const productGrid = document.getElementById('product-grid');
+    const productEmpty = document.getElementById('product-empty');
+    const productSearch = document.getElementById('product-search');
+    let activeCategory = 'all';
+    let activeQuery = '';
+
+    function renderProducts() {
+      if (!productGrid) return;
+      const q = activeQuery.toLowerCase().trim();
+      const filtered = PRODUCTS.filter(p => {
+        const catOk = activeCategory === 'all' || p.division === activeCategory;
+        const qOk = !q || p.name.toLowerCase().includes(q) || p.id.toLowerCase().includes(q) || p.summary.toLowerCase().includes(q) || p.specs.some(s => s[1].toLowerCase().includes(q)) || p.applications.some(a => a.toLowerCase().includes(q));
+        return catOk && qOk;
+      });
+
+      if (!filtered.length) {
+        productGrid.innerHTML = '';
+        if (productEmpty) productEmpty.classList.remove('hidden');
+        return;
+      }
+      if (productEmpty) productEmpty.classList.add('hidden');
+
+      productGrid.innerHTML = filtered.map(p => `
+        <article class="product-card" data-id="${p.id}" tabindex="0" role="button" aria-label="View details for ${p.name}">
+          <div class="img-ph">
+            <div class="img-ph-inner">
+              ${PH_ICON_SVG}
+              <span class="ph-label">${p.name}</span>
+              <code class="ph-path">/assets/images/products/${p.slug}/front.jpg</code>
+            </div>
+          </div>
+          <div class="p-5 flex-1 flex flex-col">
+            <div class="flex items-center justify-between font-mono text-[10px] text-subtle mb-2">
+              <span class="text-accent font-bold">${p.id}</span>
+              <span class="uppercase">${p.divisionLabel}</span>
+            </div>
+            <h3 class="font-display font-bold text-base sm:text-lg text-ink leading-tight transition-colors">${p.name}</h3>
+            <p class="mt-2 text-xs text-muted leading-relaxed flex-1">${p.summary}</p>
+            <div class="mt-4 pt-3 border-t border-line flex items-center justify-between">
+              <span class="font-mono text-[10px] uppercase tracking-wider text-subtle">View spec →</span>
+              <span class="font-mono text-[10px] text-accent">4 image slots</span>
+            </div>
+          </div>
+        </article>
+      `).join('');
+
+      productGrid.querySelectorAll('.product-card').forEach(card => {
+        const id = card.getAttribute('data-id');
+        card.addEventListener('click', () => openProductModal(id));
+        card.addEventListener('keydown', e => {
+          if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openProductModal(id); }
+        });
+      });
+    }
+
+    document.querySelectorAll('.cat-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.cat-btn').forEach(b => b.setAttribute('aria-selected', 'false'));
+        btn.setAttribute('aria-selected', 'true');
+        activeCategory = btn.getAttribute('data-cat');
+        renderProducts();
+      });
+    });
+
+    if (productSearch) {
+      productSearch.addEventListener('input', e => { activeQuery = e.target.value; renderProducts(); });
+    }
+
+    /* ══════════════════════════════════════════════════════════════════
+       STEP 6 — PRODUCT MODAL
+       ══════════════════════════════════════════════════════════════════ */
+    const productModal = document.getElementById('product-modal');
+    const modalCode = document.getElementById('modal-code');
+    const modalTitle = document.getElementById('modal-title');
+    const modalDesc = document.getElementById('modal-desc');
+    const modalSpecs = document.getElementById('modal-specs');
+    const modalApps = document.getElementById('modal-apps');
+    const modalHero = document.getElementById('modal-hero-img');
+    const modalThumbs = document.getElementById('modal-thumbs');
+    const modalClose = document.getElementById('modal-close');
+    const modalCTA = document.getElementById('modal-cta');
+    let lastFocusedElement = null;
+
+    function openProductModal(id) {
+      const p = PRODUCTS.find(x => x.id === id);
+      if (!p || !productModal) return;
+
+      lastFocusedElement = document.activeElement;
+      modalCode.textContent = `${p.id} · ${p.divisionLabel}`;
+      modalTitle.textContent = p.name;
+      modalDesc.textContent = p.description;
+
+      modalSpecs.innerHTML = p.specs.map(([k, v]) => `<div class="flex justify-between gap-4 py-1.5 border-b border-line/60"><dt class="text-muted font-mono text-[10px] uppercase tracking-wider shrink-0">${k}</dt><dd class="text-ink font-medium text-right">${v}</dd></div>`).join('');
+      modalApps.innerHTML = p.applications.map(a => `<li class="flex items-start gap-2"><span class="text-accent mt-0.5">—</span><span>${a}</span></li>`).join('');
+
+      const heroImg = IMAGE_SLOTS[0];
+      modalHero.innerHTML = `<div class="img-ph-inner">${PH_ICON_SVG}<span class="ph-label">${heroImg.label}</span><code class="ph-path">/assets/images/products/${p.slug}/${heroImg.path}</code></div>`;
+
+      modalThumbs.innerHTML = IMAGE_SLOTS.map(img => `<div class="modal-thumb" title="${img.label}"><div class="img-ph-inner">${PH_ICON_SVG}<span class="ph-label">${img.label}</span></div></div>`).join('');
+
+      modalCTA.onclick = e => {
+        e.preventDefault();
+        productModal.close();
+        const select = document.getElementById('rfq-product');
+        const optionMap = {
+          'MPI-G01': 'Taper Plug / Ring Gauge', 'MPI-G02': 'Snap Gauge', 'MPI-G03': 'Plain Ring Gauge',
+          'MPI-G04': 'Profile Plug Gauge', 'MPI-G05': 'Plain Plug Gauge', 'MPI-G06': 'Pin Gauge',
+          'MPI-G07': 'Runout Checking Gauge', 'MPI-T01': 'Assembly Fixture', 'MPI-T02': 'Jigs and Fixtures',
+          'MPI-L01': 'Lead Nut', 'MPI-L02': 'Lead Screw and Nut', 'MPI-L03': 'Brass Ring / Phosphorous Bronze Ring',
+          'MPI-E01': 'PCB Wedge Lock', 'MPI-E02': 'Heat Sink', 'MPI-S01': 'Rotary Speedometer Cable Swaging Machine'
+        };
+        if (select && optionMap[p.id]) select.value = optionMap[p.id];
+        document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
+        setTimeout(() => { const el = document.getElementById('rfq-name'); if (el) el.focus(); }, 600);
+      };
+
+      productModal.showModal();
+      modalClose.focus();
+    }
+
+    if (modalClose) modalClose.addEventListener('click', () => productModal.close());
+    if (productModal) {
+      productModal.addEventListener('click', e => { if (e.target === productModal) productModal.close(); });
+      productModal.addEventListener('close', () => {
+        if (lastFocusedElement && typeof lastFocusedElement.focus === 'function') lastFocusedElement.focus();
+      });
+    }
+
+    /* ══════════════════════════════════════════════════════════════════
+       STEP 7 — CLIENT ROSTER
+       ══════════════════════════════════════════════════════════════════ */
+    const CLIENTS = [
+      { name: 'TAFE (Tractors and Farm Equipment Ltd.)', sector: 'Hydraulics', tag: 'Agriculture & Heavy Equipment' },
+      { name: 'Suprajit Engineering Ltd.', sector: 'Automotive', tag: 'Automotive Cables & Ancillaries' },
+      { name: 'ZF Rane Automotive India Pvt. Ltd.', sector: 'Automotive', tag: 'Tier-1 Steering & Safety' },
+      { name: 'Nash Industries (I) Pvt. Ltd.', sector: 'Aerospace', tag: 'Aerospace, Defense & Stamping' },
+      { name: 'Daifuku India Pvt. Ltd.', sector: 'Engineering', tag: 'Automated Material Handling' },
+      { name: 'Blue Star Engineering & Electronics Ltd.', sector: 'Aerospace', tag: 'Metrology & Testing Systems' },
+      { name: 'Stein Seal Company India Pvt. Ltd.', sector: 'Aerospace', tag: 'Aerospace Mechanical Seals' },
+      { name: '3D Concept Analysis & Development India Pvt. Ltd.', sector: 'Aerospace', tag: 'Aerospace & Defense Engineering' },
+      { name: 'Kems Forgings Ltd.', sector: 'Automotive', tag: 'Closed-Die Forgings' },
+      { name: 'PMC Hydraulics Pvt. Ltd.', sector: 'Hydraulics', tag: 'Hydraulic Systems & Cylinders' },
+      { name: 'BOSS Hydraulics LLP', sector: 'Hydraulics', tag: 'Hydraulic Equipment' },
+      { name: 'Universal Flexibles Pvt. Ltd.', sector: 'Hydraulics', tag: 'Flexible Hoses & Fittings' },
+      { name: 'Agni Motors', sector: 'Automotive', tag: 'High-Efficiency Electric Motors' },
+      { name: 'Focus Diecast Pvt. Ltd.', sector: 'Automotive', tag: 'Pressure Die-Casting' },
+      { name: 'MPS Precision Engineering Pvt. Ltd.', sector: 'Engineering', tag: 'High-Precision Machined Parts' },
+      { name: 'Acey Engineering Pvt. Ltd.', sector: 'Automotive', tag: 'Automotive Machined Components' },
+      { name: 'LeanSmith Products Pvt. Ltd.', sector: 'Engineering', tag: 'Precision Manufacturing' },
+      { name: 'Engineered Polymers India Pvt. Ltd.', sector: 'Engineering', tag: 'Industrial Sealing & Polymers' },
+      { name: 'M&G Impex India Pvt. Ltd.', sector: 'Engineering', tag: 'Industrial Components' },
+      { name: 'ICP India Pvt. Ltd.', sector: 'Engineering', tag: 'Industrial Component Manufacturing' },
+      { name: 'Kuhu Industries Pvt. Ltd.', sector: 'Engineering', tag: 'Engineering & Fabrication' },
+      { name: 'Tricod Business Group India', sector: 'Engineering', tag: 'Industrial Group' },
+      { name: 'Gangadeep Industries', sector: 'Engineering', tag: 'Precision Machining' }
+    ];
+
+    const clientGrid = document.getElementById('client-grid');
+    let activeClientSector = 'all';
+
+    function renderClients() {
+      if (!clientGrid) return;
+      const filtered = activeClientSector === 'all' ? CLIENTS : CLIENTS.filter(c => c.sector === activeClientSector);
+      clientGrid.innerHTML = filtered.map((c, i) => `
+        <div class="client-card">
+          <div class="flex items-center justify-between font-mono text-[9px] text-subtle mb-1.5">
+            <span class="text-accent font-bold">${String(i + 1).padStart(2, '0')}</span>
+            <span class="uppercase">${c.sector}</span>
+          </div>
+          <div class="font-display font-bold text-sm text-ink leading-tight">${c.name}</div>
+          <div class="font-mono text-[10px] text-muted mt-1.5">${c.tag}</div>
+        </div>
+      `).join('');
+    }
+
+    document.querySelectorAll('.client-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.client-btn').forEach(b => b.setAttribute('aria-selected', 'false'));
+        btn.setAttribute('aria-selected', 'true');
+        activeClientSector = btn.getAttribute('data-sector');
+        renderClients();
+      });
+    });
+
+    /* ══════════════════════════════════════════════════════════════════
+       STEP 8 — FOOTER PRODUCT LINKS
+       ══════════════════════════════════════════════════════════════════ */
+    document.querySelectorAll('[data-product]').forEach(link => {
+      link.addEventListener('click', e => {
+        e.preventDefault();
+        const id = link.getAttribute('data-product');
+        document.getElementById('products').scrollIntoView({ behavior: 'smooth' });
+        setTimeout(() => openProductModal(id), 400);
+      });
+    });
+
+    /* ══════════════════════════════════════════════════════════════════
+       STEP 9 — RFQ FORM
+       ══════════════════════════════════════════════════════════════════ */
+    const rfqForm = document.getElementById('rfq-form');
+    const rfqFeedback = document.getElementById('rfq-feedback');
+
+    function setFieldError(field, hasError) {
+      const wrapper = field.closest('div');
+      if (!wrapper) return;
+      wrapper.classList.toggle('field-error', hasError);
+      field.setAttribute('aria-invalid', String(hasError));
+    }
+
+    function validateField(field) {
+      const val = (field.value || '').trim();
+      let valid = true;
+      if (field.required && !val) valid = false;
+      if (field.type === 'email' && val) valid = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(val);
+      if (field.type === 'tel' && val) {
+        const digits = val.replace(/[\s\-()]/g, '');
+        valid = /^(\+?91)?[6-9]\d{9}$/.test(digits);
+      }
+      if (field.id === 'rfq-name' && val && val.length < 2) valid = false;
+      if (field.id === 'rfq-company' && val && val.length < 2) valid = false;
+      setFieldError(field, !valid);
+      return valid;
+    }
+
+    if (rfqForm) {
+      rfqForm.querySelectorAll('input, select, textarea').forEach(field => {
+        field.addEventListener('blur', () => { if (field.value) validateField(field); });
+        field.addEventListener('input', () => {
+          const wrapper = field.closest('div');
+          if (wrapper && wrapper.classList.contains('field-error')) validateField(field);
+        });
+      });
+
+      rfqForm.addEventListener('submit', e => {
+        e.preventDefault();
+        const fields = ['rfq-name', 'rfq-company', 'rfq-phone', 'rfq-email', 'rfq-product', 'rfq-spec'].map(id => document.getElementById(id));
+        const allValid = fields.map(validateField).every(Boolean);
+
+        if (!allValid) {
+          rfqFeedback.classList.remove('hidden');
+          rfqFeedback.className = 'p-3.5 bg-red-500/10 border border-red-500/30 text-xs font-mono text-red-700 dark:text-red-300 rounded-sm';
+          rfqFeedback.textContent = '⚠ Please correct the highlighted fields before submitting.';
+          return;
+        }
+
+        const d = {
+          name: document.getElementById('rfq-name').value.trim(),
+          company: document.getElementById('rfq-company').value.trim(),
+          phone: document.getElementById('rfq-phone').value.trim(),
+          email: document.getElementById('rfq-email').value.trim(),
+          product: document.getElementById('rfq-product').value,
+          specFormat: document.getElementById('rfq-spec').value,
+          notes: document.getElementById('rfq-notes').value.trim()
+        };
+
+        const subject = `B2B RFQ — ${d.product} — ${d.company}`;
+        const body = `MERU PRECISION INDUSTRIES — TECHNICAL RFQ\n─────────────────────────────────────────\nContact name  : ${d.name}\nCompany / OEM : ${d.company}\nPhone / WApp  : ${d.phone}\nEmail         : ${d.email}\nProduct line  : ${d.product}\nSpec format   : ${d.specFormat}\n\nNotes (dimensions, tolerances, material, batch):\n${d.notes || '(to be shared on call)'}\n\n─────────────────────────────────────────\nPlease attach any 2D/3D drawing or sample photographs to this email, or send via WhatsApp to +91 99864 65377.\nSent from meruprecision.co.in`;
+
+        rfqFeedback.classList.remove('hidden');
+        rfqFeedback.className = 'p-3.5 bg-green-500/10 border border-green-500/30 text-xs font-mono text-green-700 dark:text-green-300 rounded-sm';
+        rfqFeedback.textContent = '✓ RFQ packet prepared. Opening your email client addressed to merushiv@gmail.com (CC: merushiv@yahoo.com). You may attach your drawing to that email.';
+
+        window.location.href = `mailto:merushiv@gmail.com?cc=merushiv@yahoo.com&subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      });
+    }
+
+    const rfqWhatsApp = document.getElementById('rfq-whatsapp');
+    if (rfqWhatsApp) {
+      rfqWhatsApp.addEventListener('click', () => {
+        const g = id => { const el = document.getElementById(id); return el ? el.value.trim() : ''; };
+        const msg = `Hello Meru Precision Industries,\n\nI'd like to request a quote:\n\n• Name: ${g('rfq-name') || '(not provided)'}\n• Company: ${g('rfq-company') || '(not provided)'}\n• Phone: ${g('rfq-phone') || '(not provided)'}\n• Product: ${g('rfq-product') || '(not selected)'}\n• Spec format: ${g('rfq-spec') || '(not selected)'}\n${g('rfq-notes') ? `• Notes: ${g('rfq-notes')}\n` : ''}\nPlease let me know where I can share our engineering drawing / sample photographs.`;
+        window.open(`https://wa.me/919986465377?text=${encodeURIComponent(msg)}`, '_blank', 'noopener,noreferrer');
+      });
+    }
+
+    /* ══════════════════════════════════════════════════════════════════
+       STEP 10 — INITIAL RENDER (wrapped so failure never blocks reveal)
+       ══════════════════════════════════════════════════════════════════ */
+    try { renderProducts(); } catch (err) { console.warn('Meru: product render failed:', err); }
+    try { renderClients(); } catch (err) { console.warn('Meru: client render failed:', err); }
+
+    console.info('%cMeru Precision Industries — v2.2 (reveal-fix)', 'color:#0F172A;font-weight:bold;font-size:12px;');
+  })();
+  </script>
+</body>
+</html>
